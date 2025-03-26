@@ -1,0 +1,68 @@
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2px;
+}
+
+.nav-container > button {
+  width: 100%;
+  padding: 20px 10px;
+  font-size: 20px;
+}
+
+.inapam-btn {
+  background-color: #f53de9;
+  border: none;
+  color: white;
+}
+.descuento-btn {
+  background-color: #f8568c;
+  border: none;
+  color: white;
+}
+
+.devolucion-btn {
+  background-color: #ff7979;
+  border: none;
+  color: white;
+}
+
+/* devolucion se volvio ajuste. */
+.ajuste-btn {
+  background-color: #ff7979;
+  border: none;
+  color: white;
+}
+
+.defecto-btn {
+  background-color: #6da6fb;
+  border: none;
+  color: white;
+  width: 100px;
+  height: 80px;
+}
+
+.generar-vale-btn {
+  background-color: rgb(135, 129, 244);
+  border: none;
+  color: white;
+}
+
+.usar-vale-btn {
+  background-color: rgb(162, 158, 239);
+  border: none;
+  color: white;
+}
+
+.devolucion-dinero-btn {
+  background-color: rgb(100, 223, 164);
+  border: none;
+  color: white;
+}
+
+.salida_efectivo_btn {
+  background-color: rgb(26, 190, 149);
+  border: none;
+  color: white;
+}

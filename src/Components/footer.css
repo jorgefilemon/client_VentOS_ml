@@ -1,0 +1,82 @@
+@import url("../App.css");
+
+.footer-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: var(--midNightGray);
+	margin-top: auto;
+	width: 100%;
+	padding: 8px 0px;
+}
+
+.button-container > button {
+	padding: 12px 180px;
+	font-size: 34px;
+	border-radius: 4px;
+	background-color: rgb(101, 148, 218);
+	color: white;
+	border: none;
+
+	min-width: 580px;
+}
+
+.total-container {
+	max-width: 180px;
+	min-width: 180px;
+	border-radius: 4px;
+
+	text-align: right;
+	color: white;
+
+	width: 100%;
+}
+
+.total-container .rebaja {
+	font-size: 20px;
+	padding-right: 2px;
+}
+
+.gris {
+	color: rgb(161, 161, 161);
+}
+
+.rosa {
+	color: rgb(252, 110, 169);
+}
+
+.total-container .precio {
+	font-size: 34px;
+}
+
+.status_container {
+	max-width: 180px;
+	min-width: 180px;
+	padding: 4px;
+	border-radius: 4px;
+	text-align: left;
+	color: white;
+	font-size: 16px;
+}
+
+.status_container p {
+	font-size: 20px;
+	color: rgb(224, 224, 224);
+}
+.mercadoConectado {
+	background-color: rgb(202, 202, 202);
+	border-radius: 6px;
+	padding: 2px 4px;
+	color: rgb(0, 138, 58);
+	font-weight: 600;
+	font: 18px;
+}
+
+.mercadoSinConexion {
+	background-color: rgb(146, 146, 146);
+	border-radius: 6px;
+	padding: 2px 4px;
+	color: rgb(250, 18, 115);
+	font-size: 18px;
+	font-weight: 600;
+}

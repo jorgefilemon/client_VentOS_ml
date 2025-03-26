@@ -1,0 +1,89 @@
+.formContainer {
+  display: flex;
+  background-color: rgba(234, 234, 234, 0.632);
+  margin: 0px auto;
+  width: 295px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.header {
+  padding: 12px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: cornflowerblue;
+  border-bottom: 1px solid black;
+}
+
+.ticketContainer {
+  padding: 12px 0px;
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.tableContainer {
+  width: 100%;
+}
+
+.tableContainer table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tableContainer thead {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.tableContainer thead td {
+  padding: 8px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: normal;
+  background-color: darkturquoise;
+}
+
+.tableContainer tbody td {
+  padding: 4px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: normal;
+  background-color: deepskyblue;
+}
+
+.tableContainer td:nth-child(1) {
+  text-align: left;
+}
+
+.tableContainer tr:nth-child(2) {
+  border-bottom: 1px solid black;
+}
+
+.venta {
+  width: 100%;
+  background-color: lightsteelblue;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.venta div {
+  padding: 3px;
+  width: 36%;
+  text-align: right;
+}
+
+.venta div .formaPago {
+  padding: 3px;
+  width: 50%;
+  text-align: center;
+}
+
+.garantia {
+  width: 100%;
+  text-align: center;
+  background-color: honeydew;
+}

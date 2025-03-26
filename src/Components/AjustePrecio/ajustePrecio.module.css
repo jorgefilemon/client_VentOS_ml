@@ -1,0 +1,99 @@
+.modalBackgroundAjustePrecio {
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(126, 126, 126, 0.877);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(1px);
+}
+.ajusteContainer {
+  padding-top: 10px;
+  background-color: rgb(217, 217, 217);
+  width: 400px;
+  height: 400px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.ajustePrecio {
+  margin: 30px;
+  background-color: var(--darkMelon);
+  width: 320px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.ajustePrecio h1 {
+  margin: 20px;
+  color: white;
+  font-size: 30px;
+}
+
+.ajustePrecio input {
+  width: 200px;
+  height: 60px;
+  font-size: 40px;
+  border: none;
+  padding: 4px;
+  border-radius: 2px;
+  color: rgb(88, 88, 88);
+  caret-color: var(--darkMelon);
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal-footer button {
+  font-size: 25px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.actualizar-btn-desactivado {
+  color: white;
+  background-color: #3561fe74;
+  border: 2px solid #2856fb5f;
+  border-radius: 6px;
+}
+
+.modalFooter > button {
+  width: 150px;
+  padding: 30px;
+  margin: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.actualizarBtn {
+  color: white;
+  background-color: #ff7979;
+  border: 2px solid #ff7979;
+}
+
+.cancelarBtn {
+  border: 2px solid rgb(35, 35, 35);
+  color: rgb(35, 35, 35);
+}
+
+.ajusteInput:focus {
+  /* border: 1px solid #ff5c5c; */
+  outline: 3px solid #ff7979;
+}
+
+.ajusteInput::selection {
+  background-color: #ff7979;
+  border-radius: 2px;
+  color: white;
+}

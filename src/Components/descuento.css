@@ -1,0 +1,157 @@
+.modalBackground {
+	width: 100vw;
+	height: 100vw;
+	background-color: rgba(126, 126, 126, 0.877);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(1px);
+}
+
+.modalContainer {
+	background-color: rgb(217, 217, 217);
+	width: 500px;
+	height: 500px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 60px;
+}
+
+.modal-precio {
+	width: 90%;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: rgb(236, 236, 236);
+	background-color: #949494;
+	border-radius: 2px;
+	padding: 10px;
+}
+.modal-precio > h2 {
+	font-size: 40px;
+}
+
+.modal-descuento {
+	display: flex;
+	height: 100px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 30px;
+}
+.modal-descuento input {
+	padding: 10px;
+	width: 100px;
+	height: 100%;
+	font-size: 20px;
+	border: 1px solid gray;
+	color: rgb(59, 59, 59);
+	border-radius: 2px;
+}
+
+.modal-descuento p {
+	font-size: 40px;
+	width: 90px;
+	padding: 10px;
+	font-weight: bold;
+	color: #fc3b7b;
+}
+
+.modal-descuento button {
+	background-color: #fc3b7b;
+	height: 100%;
+	margin: 0px;
+	font-size: 20px;
+	padding: 20px 16px;
+	border: none;
+	color: rgb(255, 255, 255);
+	border-radius: 2px;
+}
+
+.precio-editable {
+	padding: 28px;
+}
+
+.precio-editable input {
+	font-size: 50px;
+	width: 310px;
+	border-radius: 2px;
+
+	text-align: center;
+	padding: 5px;
+	border: 1px solid #464646;
+}
+/* .label-container {
+
+  width: 300px;
+  padding: 0px;
+} */
+
+.modal-footer {
+	display: flex;
+	width: 90%;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+}
+
+.modal-btn-agregar {
+	height: 80px;
+	width: 140px;
+	padding: 0px;
+	background-color: #fc3b7b;
+	color: white;
+	border: none;
+	border-radius: 2px;
+}
+
+.modal-btn-agregar-desactivado {
+	margin: 20px;
+	padding: 20px;
+	background-color: #ff5c9297;
+	color: white;
+	border: none;
+	border-radius: 2px;
+}
+
+.modal-btn-cancelar {
+	height: 80px;
+	width: 140px;
+	padding: 0px;
+	border-radius: 2px;
+}
+
+/* aqui esta el problema de los inputs que se colorean en todos lados  */
+
+.modal-descuento > input:focus {
+	outline: 2px solid #fc3b7b;
+	border: 1px solid #fc3b7b;
+}
+
+.modal-descuento ::selection {
+	background-color: #fc3b7b;
+	color: white;
+}
+
+.precio-editable ::selection {
+	background-color: #fc3b7b;
+	color: white;
+}
+
+.modal-descuento > button {
+	width: 120px;
+}
+
+.cancelar {
+	color: white;
+	border: 1px solid rgb(31, 31, 31);
+}
+
+.precio-editable > input:focus {
+	outline: 2px solid #fc3b7b;
+	border: 1px solid #fc3b7b;
+}

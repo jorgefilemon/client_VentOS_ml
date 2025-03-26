@@ -1,0 +1,62 @@
+@import url('../App.css');
+
+
+
+.form-control {
+  padding: 14px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--midNightGray);
+  margin-bottom: 1px;
+}
+
+.form-space,
+.form-button {
+  min-width: 180px;
+}
+
+.form-control form input {
+  padding: 16px;
+  width: 460px;
+  font-size: 20px;
+  border-radius: 2px;
+  border: 1px solid gray;
+}
+
+.form-control form button {
+  padding: 16px;
+  font-size: 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+
+  color: rgb(233, 233, 233);
+  background-color: var(--lightMidnight-200);
+}
+
+.form-button button {
+  max-width: 100px;
+  padding: 6px;
+  font-size: 18px;
+  color: white;
+  float: right;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--lightMidnight-200);
+}
+
+.form-control form input {
+  color:white;
+  border: none;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 4px;
+  background-color: rgb(170, 170, 170);
+}
+
+.form-control form > input:focus {
+  outline: 3px solid #74dcff;
+  border: 1px solid #74dcff;
+}

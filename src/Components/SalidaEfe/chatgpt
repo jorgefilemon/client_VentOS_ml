@@ -1,0 +1,78 @@
+import { useState } from "react";
+import styles from "../modal/modal.module.css";
+import ModalCantidad from "./Cantidad";
+
+function Fletes({ closeModal }) {
+	const [modalCantidad, setModalCantidad] = useState(false);
+
+	const [expense, setExpense] = useState({
+		type: "flete",
+		expenseName: "",
+		cantidad: 0,
+	});
+
+	const [expenseName, setExpenseName] = useState(null);
+
+	const [expenseList, setExpenseList] = useState([]);
+
+	const createexpense = (e) => {
+		setExpenseName(e.target.id);
+		setModalCantidad(true);
+		console.log(expense);
+	};
+
+	return (
+		<>
+			<div className={styles.options}>
+				<button
+					id="inter bajio"
+					className={styles.rosaFuerte}
+					onClick={(e) => createexpense(e)}
+				>
+					inter bajio
+				</button>
+			</div>
+			<div className={styles.modalTable}>
+				<table>
+					<thead>
+						<tr>
+							<th>borrar</th>
+							<th>{expense.type}</th>
+							<th>cantidad</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{/* Use map to render rows for each element in expenseList */}
+						{expenseList.map((item, index) => (
+							<tr key={index}>
+								<td>
+									<button>X</button>
+								</td>
+								<td>{item.expenseName}</td>
+								<td>{item.cantidad}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+			<div className={styles.aceptarCancelar}>
+				<button>Aceptar</button>
+				<button onClick={() => closeModal()}>Cancelar</button>
+			</div>
+
+			{modalCantidad && (
+				<ModalCantidad
+					expense={expense}
+					expenseName={expenseName}
+					setExpense={setExpense}
+					setModalCantidad={setModalCantidad}
+					expenseList={expenseList}
+					setExpenseList={setExpenseList}
+				/>
+			)}
+		</>
+	);
+}
+
+export default Fletes;

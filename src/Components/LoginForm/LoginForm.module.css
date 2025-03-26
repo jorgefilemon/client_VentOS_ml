@@ -1,0 +1,86 @@
+:root {
+	--blue: #6488f3;
+}
+
+.formContainer {
+	display: flex;
+	background-color: rgb(53, 53, 59);
+	margin: 100px auto;
+	width: 500px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 60px 116px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	height: 140px;
+	width: 100%;
+	color: white;
+	font-size: 60px;
+	font-family: britannic;
+	background-color: var(--blue);
+	margin-bottom: 30px;
+	border-radius: 4px;
+}
+
+.loginForm {
+	width: 100%;
+}
+
+.loginForm form {
+	display: flex;
+	flex-direction: column;
+}
+
+.loginForm form input {
+	margin-top: 14px;
+	border: none;
+	height: 60px;
+	border-radius: 4px;
+	padding: 10px;
+	border: 3px solid white;
+	font-size: 20px;
+}
+
+.loginForm form > input:focus {
+	outline: none !important;
+	border: 3px solid var(--blue);
+}
+
+.loginForm form > input::placeholder {
+	color: #888888ce;
+}
+
+.loginForm form > input:focus::placeholder {
+	color: #88888884;
+}
+
+.loginForm form button {
+	margin-top: 20px;
+	background-color: var(--blue);
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-size: 20px;
+	padding: 20px;
+}
+
+.auth {
+	padding: 10px;
+	height: 38px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.auth p {
+	color: rgb(240, 25, 223);
+	font-size: 16px;
+}

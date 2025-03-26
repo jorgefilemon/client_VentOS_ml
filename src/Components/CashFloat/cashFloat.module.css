@@ -1,0 +1,66 @@
+@import url("../../App.css");
+
+/* CONTAINER */
+.cashFloatContainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	color: rgb(35, 35, 35);
+	gap: 10px;
+}
+
+/* AGREGAR CONTAINER */
+
+.cashFloat_Agregar_Container {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	background-color: var(--midNightGray);
+}
+.cashFloat_Agregar_button_Container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 20%;
+	background-color: var(--midNightGray);
+}
+.cashFloat_Agregar_button_Container button {
+	width: 80%;
+	border-radius: 8px;
+	background-color: var(--darkMelon);
+	height: 80px;
+	color: white;
+	border: none;
+	font-size: 2rem;
+}
+.cashFloat_table_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80%;
+	background-color: rgb(206, 242, 134);
+}
+
+/* GUARDAR CONTAINER */
+
+.cashFloat_Guardar_Container {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+}
+.cashFloat_Guardar_button_Container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 20%;
+	background-color: var(--midNightGray);
+}
+.cashFloat_Guardar_button_Container button {
+	width: 80%;
+	border-radius: 8px;
+	background-color: #6da6fb;
+	height: 80px;
+	color: white;
+	border: none;
+	font-size: 2rem;
+}

@@ -1,0 +1,54 @@
+@import url('../../App.css');
+
+
+.cargandoMensaje {
+  color: white;
+  font-size: 30px;
+  margin-top: -180px; /* Shift the container upwards */
+}
+
+
+.countShoesTableContainer {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: -180px; /* Shift the container upwards */
+
+  }
+  
+  .countShoesTableContainer table {
+    width: 60%;
+
+    font-size: 20px;
+    border-collapse: collapse;
+    color: white;
+  }
+  
+  .countShoesTableContainer table td {
+    padding: 10px;
+    border: solid 1px rgb(240, 240, 240);
+    text-align: right;
+    width: 120px;
+  }
+  
+  .countShoesTableContainer table th {
+
+    padding: 10px;
+    border: solid 1px rgb(240, 240, 240);
+    text-align: right;
+    width: 120px;
+    background-color: var(--lightMidnight);
+  }
+
+/* 
+  .countShoesTableContainer table tbody tr:nth-child(1){
+    padding: 10px;
+    border: solid 1px rgb(240, 240, 240);
+    text-align: right;
+    width: 120px;
+    background-color: var(--midNightGray)
+  } */

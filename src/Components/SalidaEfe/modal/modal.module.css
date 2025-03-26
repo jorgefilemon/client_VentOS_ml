@@ -1,0 +1,167 @@
+@import "../../myColors.module.css";
+
+.modalBackground {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(126, 126, 126, 0.877);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(1px);
+	z-index: 999; /* Ensure the modal is on top of other content */
+}
+
+.modalContainer {
+	background-color: rgb(217, 217, 217);
+	width: 900px;
+	height: 600px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.modalContainer .options {
+		display: flex;
+		width: 100%;
+		justify-content: space-evenly;
+	}
+
+	.modalContainer .options button {
+		width: 218px;
+		height: 120px;
+		color: white;
+		font-size: 26px;
+		border: none;
+	}
+
+	.modalContainer .modalTable {
+		width: 100%;
+		min-height: 280px;
+		max-height: 280px;
+		overflow-y: auto;
+		background-color: rgb(230, 230, 230);
+	}
+
+	.modalContainer .modalTable table {
+		border-collapse: collapse;
+		text-align: center;
+		width: 100%;
+		background-color: rgb(206, 206, 206);
+	}
+		.modalContainer .modalTable table th:nth-child(1) {
+			min-width: 50px;
+			max-width: 50px;
+		}
+
+
+		.modalContainer .modalTable thead {
+		position: sticky;
+		top: 0;
+	}
+
+	.modalContainer .modalTable th {
+		background-color: rgb(159, 159, 159);
+		color: white;
+		padding: 16px 18px;
+		/* border-top: 1px solid white;
+		border-bottom: 1px solid white; */
+		font-size: 20px;
+		font-weight: 400;
+	}
+
+	.modalTable button {
+		padding: 16px 22px;
+		border: none;
+		background-color: darkgray;
+		border-radius: 6px;
+		color: white;
+		font-weight: bold;
+	}
+
+	td {
+		border: solid 1px rgb(240, 240, 240);
+		font-size: 20px;
+		padding: 8px 0px;
+	}
+
+	.footer {
+		display: flex;
+		height: 60px;
+		width: 100%;
+		background-color: rgb(159, 159, 159);
+		align-items: center;
+		justify-content: flex-end;
+		padding-right: 130px;
+	}
+
+	.footer	.totalQuantity {
+			background-color: rgba(255, 255, 255, 0.964);
+			font-size: 28px;
+			border-radius: 6px;
+			width: 150px;
+			padding-right: 10px;
+			text-align: right;
+		}
+
+	.footer	.totalText {
+			padding: 20px;
+			font-size: 24px;
+			color: rgb(59, 59, 59);
+	}
+
+
+	.footer .aceptarCancelar {
+		display: flex;
+		width: 100%;
+		justify-content: space-evenly;
+		height: 100%;
+		align-items: center;
+	}
+
+	.aceptarCancelar button {
+			margin-top: 14px;
+			width: 300px;
+			height: 90px;
+			font-size: 30px;
+			border-radius: 6px;
+		}
+
+	.aceptarCancelar .aceptarBtn {
+			background-color: var(--rosaFuerte-bg);
+			color: white;
+			border: none;
+		}
+
+	.aceptarCancelar .cancelarBtn {
+			border: 1px solid rgb(86, 86, 86);
+		}
+	
+
+
+.rosaFuerte {
+	background-color: var(--rosaFuerte-bg);
+}
+.naranja {
+	background-color: var(--naranja-bg);
+}
+.moradoClaro {
+	background-color: var(--moradoClaro-bg);
+}
+.morado {
+	background-color: var(--morado-bg);
+}
+.verde {
+	background-color: var(--verdeClaro-bg);
+}
+.rosa {
+	background-color: var(--rosa-bg);
+}
+.orange {
+	background-color: orange;
+}

@@ -1,0 +1,89 @@
+.valesBackground {
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(126, 126, 126, 0.699);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(1px);
+}
+.valesContainer {
+  padding: 20px;
+  background-color: rgb(217, 217, 217);
+  width: 400px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.valesPrecio {
+  background-color: rgb(162, 158, 239);
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.valesPrecio h2 {
+  padding: 10px;
+  color: white;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.valesPrecio h1 {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+.valesPrecio input {
+  width: 200px;
+  height: 50px;
+  font-size: 40px;
+  border: 0px;
+  padding: 4px;
+  border-radius: 2px;
+  color: rgb(41, 41, 41);
+  caret-color: #2855fb;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-evenly;
+
+  padding-top: 20px;
+  width: 100%;
+}
+
+.valesPrecio > input:focus {
+  outline: 2px solid rgb(112, 243, 243);
+  border: 1px solid rgb(112, 243, 243);
+}
+
+.modalFooter > button {
+  padding: 30px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.valesPrecio ::selection {
+  background-color: #fc3b7b;
+  color: white;
+}
+
+.actualizarBtn {
+  color: white;
+  background-color: rgb(162, 158, 239);
+  border: 2px solid rgb(162, 158, 239);
+}
+
+.cancelarBtn {
+  border: 2px solid rgb(35, 35, 35);
+  color: rgb(35, 35, 35);
+}
