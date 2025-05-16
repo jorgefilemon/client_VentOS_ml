@@ -14,14 +14,15 @@
 .cashFloat_Agregar_Container {
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	width: 64%;
 	background-color: var(--midNightGray);
 }
 .cashFloat_Agregar_button_Container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 20%;
+
+	height: 120px;
 	background-color: var(--midNightGray);
 }
 .cashFloat_Agregar_button_Container button {
@@ -33,12 +34,33 @@
 	border: none;
 	font-size: 2rem;
 }
-.cashFloat_table_container {
+
+.cashFloat_enCaja_container {
+	padding: 16px;
+	height: 76px;
+	color: white;
+	justify-content: right;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	height: 80%;
-	background-color: rgb(206, 242, 134);
+}
+
+.cashFloat_enCaja_container p {
+	font-size: 20px;
+}
+
+.enCaja_ctn {
+	padding-left: 6px;
+	padding-right: 10px;
+}
+
+.totalCash_ctn {
+	padding: 10px;
+	border-radius: 6px;
+	color: white;
+	font-size: 28px;
+	background-color: rgba(179, 179, 179, 0.19);
+	border: solid 1px var(--darkMelon);
+	text-align: right;
 }
 
 /* GUARDAR CONTAINER */
@@ -46,7 +68,8 @@
 .cashFloat_Guardar_Container {
 	display: flex;
 	flex-direction: column;
-	width: 30%;
+	background-color: var(--midNightGray);
+	width: 36%;
 }
 .cashFloat_Guardar_button_Container {
 	display: flex;
@@ -63,4 +86,14 @@
 	color: white;
 	border: none;
 	font-size: 2rem;
+}
+
+.totalPullCtn {
+	padding: 10px;
+	border-radius: 6px;
+	color: white;
+	font-size: 28px;
+	background-color: rgba(179, 179, 179, 0.19);
+	border: solid 1px #6da6fb;
+	text-align: right;
 }

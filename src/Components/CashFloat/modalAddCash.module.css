@@ -1,0 +1,151 @@
+@import "../myColors.module.css";
+
+.modalBackground {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(126, 126, 126, 0.885);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(1px);
+}
+
+.modalContainer_cash {
+	background-color: var(--midNightGray);
+	width: 500px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.cancelar_Btn_Con {
+	display: flex;
+	justify-content: end;
+	padding: 10px;
+	width: 100%;
+	height: 70px;
+}
+
+.cancelar_Btn_Con button {
+	width: 60px;
+	border-radius: 6px;
+	border: none;
+	font-size: 26px;
+	background-color: rgba(255, 255, 255, 0.241);
+	color: white;
+}
+
+.agregar_efectivo_con {
+	height: 60px;
+}
+
+.agregar_efectivo_con p {
+	color: white;
+	font-size: 36px;
+}
+
+.tableContainer_cash {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 260px;
+}
+
+.add_cash_tbl {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.add_cash_tbl tr {
+	height: 46px;
+	font-size: 20px;
+}
+
+/* ///// td //// */
+
+.add_cash_tbl td {
+	padding: 0;
+	vertical-align: middle;
+	line-height: 0;
+	width: 100px;
+	border: none;
+}
+
+.add_cash_tbl tr:nth-child(3) td,
+.add_cash_tbl tr:nth-child(8) td {
+	border-bottom: 2px solid var(--naranja-bg);
+}
+
+.add_cash_tbl td:nth-child(1) {
+	text-align: right;
+	color: white;
+	padding-right: 6px;
+}
+
+.add_cash_tbl input {
+	height: 44px;
+	width: 70px; /* adjust as needed */
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 26px;
+	border-color: gray 1px solid;
+	outline: none;
+}
+
+.add_cash_tbl ::placeholder {
+	font-size: 20px;
+}
+
+.add_cash_tbl tr:first-child td:nth-child(2) input {
+	color: rgb(123, 123, 123);
+}
+
+.add_cash_tbl input:focus {
+	border: 1px solid var(--naranja-bg); /* or any color and thickness you prefer */
+	outline: 2px solid var(--naranja-bg);
+}
+
+.addBtnCon {
+	display: flex;
+	flex-direction: column;
+	height: 90px;
+	width: 100%;
+
+	justify-content: center;
+}
+
+.addCashBtn {
+	min-height: 60px;
+	width: 100%;
+	background-color: var(--naranja-bg);
+	color: white;
+	font-size: 26px;
+	border: none;
+	border-radius: 6px;
+}
+
+.pullCashBtn {
+	min-height: 60px;
+	width: 100%;
+	background-color: #6da6fb;
+	color: white;
+	font-size: 26px;
+	border: none;
+	border-radius: 6px;
+}
+
+.pullCashMode .add_cash_tbl input:focus {
+	border: 1px solid #6da6fb;
+	outline: 2px solid #6da6fb;
+}
+
+.pullCashMode .add_cash_tbl tr:nth-child(3) td,
+.pullCashMode .add_cash_tbl tr:nth-child(8) td {
+	border-bottom: 2px solid #6da6fb;
+}

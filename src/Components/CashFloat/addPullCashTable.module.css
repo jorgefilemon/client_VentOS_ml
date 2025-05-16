@@ -1,0 +1,49 @@
+.cashFloat_table_container {
+	padding-left: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	height: 420px;
+	overflow-x: auto;
+	max-width: 90%;
+}
+
+.cashFloat_table_container table {
+	border-collapse: collapse;
+}
+
+.cashFloat_table_container th {
+	border: 1px solid white;
+	background-color: var(--darkMelon);
+	border-color: white;
+	padding: 8px;
+	color: white;
+	font-weight: normal;
+	text-align: right;
+}
+
+.cashFloat_table_container td {
+	color: rgb(209, 209, 209);
+	padding: 6px;
+	text-align: right;
+	background-color: rgba(248, 248, 255, 0.055);
+}
+
+.cashFloat_table_container td:nth-child(1) {
+	color: white;
+	background-color: var(--midNightGray);
+}
+
+.cashFloat_table_container tr:nth-child(3) td,
+.cashFloat_table_container tr:nth-child(8) td {
+	border-bottom: 2px solid var(--naranja-bg);
+}
+
+th.guardar {
+	background-color: #6da6fb;
+}
+
+.cashFloat_table_container tr:nth-child(3) td.guardar,
+.cashFloat_table_container tr:nth-child(8) td.guardar {
+	border-bottom: 2px solid #6da6fb;
+}
