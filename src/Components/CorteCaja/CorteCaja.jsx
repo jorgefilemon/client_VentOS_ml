@@ -2,115 +2,89 @@ import Axios from "axios";
 import styles from "./corteCaja.module.css";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
+import CashClosingModal from "./CashClosingModal/CashClosingModal";
+
+import CorteCajaPanel from "./CorteCajaPanel";
 
 const CorteCaja = () => {
 	const { auth } = useContext(AuthContext);
-
 	const [openCorte, setOpenCorte] = useState(false);
 	const [mensaje, setMensaje] = useState(false);
+	const [expense, setExpenses] = useState([]);
+	const [expenseTotal, setExpenseTotal] = useState(0);
 	const [corte, setCorte] = useState({
 		efectivo: "",
 		tarjeta: "",
 		total: "",
 		cambioCliente: "",
 	});
-	const [, setExpenses] = useState([]);
+	const [cashClosingModal, setCashClosingModal] = useState(false);
 
-	useEffect(() => {
-		const revisarCorte = () => {
-			Axios.get("https:localhost:3001/revisarCorte").then((response) => {
-				console.log(response.data);
-				setCorte((prevCorte) => ({
-					...prevCorte,
-					efectivo: response.data.cash,
-					tarjeta: response.data.card,
-					total: response.data.total,
-					cambioCliente: response.data.cambioCliente,
-				}));
+	const revisarCorte = async () => {
+		try {
+			const response = await Axios.get(
+				"https://localhost:3001/revisarCorte"
+			);
+			console.log(response.data);
 
-				if (response.data.expense) {
-					setExpenses((prevExpenses) => [
-						...prevExpenses,
-						response.data.expense,
-					]);
-				}
-			});
+			setCorte((prevCorte) => ({
+				...prevCorte,
+				efectivo: response.data.cash,
+				tarjeta: response.data.card,
+				total: response.data.total,
+				cambioCliente: response.data.cambioCliente,
+			}));
+
+			if (response.data.expense) {
+				setExpenses(response.data.expense);
+			}
+
+			if (response.data.expenseTotal) {
+				setExpenseTotal(response.data.expenseTotal);
+			}
 
 			setOpenCorte(true);
-		};
+		} catch (error) {
+			console.error("Error revisando corte:", error);
+		}
+	};
 
+	useEffect(() => {
 		revisarCorte();
-	}, []); // Empty dependency array ensures the effect runs only once on mount
+	}, []);
 
+	// const hacerCorte = () => {
+	// 	Axios.post("https://localhost:3001/corte", { usu_id: auth.id }).then(
+	// 		(res) => {
+	// 			console.log(res.data);
+	// 		}
+	// 	);
+	// 	setOpenCorte(false);
+	// 	setMensaje(true);
+	// };
 	const hacerCorte = () => {
-		Axios.post("https:localhost:3001/corte", { usu_id: auth.id }).then(
-			(res) => {
-				console.log(res.data);
-			}
-		);
-		setOpenCorte(false);
-		setMensaje(true);
+		setCashClosingModal(true);
 	};
 
 	return (
 		<div className={styles.corteCajaContainer}>
-			{openCorte ? (
-				<div className={styles.corteCajaTableContainer}>
-					<table>
-						<tbody>
-							<tr>
-								<td>Efectivo</td>
-								<td>
-									{new Intl.NumberFormat("en-US", {
-										style: "currency",
-										currency: "USD",
-									}).format(corte.efectivo)}
-								</td>
-							</tr>
-							<tr>
-								<td>Tarjeta</td>
-								<td>
-									{new Intl.NumberFormat("en-US", {
-										style: "currency",
-										currency: "USD",
-									}).format(corte.tarjeta)}
-								</td>
-							</tr>
-							<tr>
-								<td>Devolucion efectivo</td>
-								<td>
-									{new Intl.NumberFormat("en-US", {
-										style: "currency",
-										currency: "USD",
-									}).format(corte.cambioCliente)}
-								</td>
-							</tr>
-							<tr>
-								<td>Total</td>
-								<td>
-									{new Intl.NumberFormat("en-US", {
-										style: "currency",
-										currency: "USD",
-									}).format(corte.total)}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div className={styles.buttonContainer}>
-						<button
-							className={styles.corteCajaBtn}
-							onClick={hacerCorte}
-						>
-							realizar corte
-						</button>
-					</div>
-				</div>
-			) : null}
-			{mensaje && (
+			<CorteCajaPanel
+				corte={corte}
+				expense={expense}
+				expenseTotal={expenseTotal}
+			/>
+			<div className={styles.buttonContainer}>
+				<button className={styles.corteCajaBtn} onClick={hacerCorte}>
+					Hacer Corte
+				</button>
+			</div>
+
+			{/* {mensaje && (
 				<div className={styles.corteExitoso}>
-					Corte realizado con exito{" "}
+					Corte realizado con exito
 				</div>
-			)}
+			)} */}
+			{cashClosingModal && <CashClosingModal />}
 		</div>
 	);
 };

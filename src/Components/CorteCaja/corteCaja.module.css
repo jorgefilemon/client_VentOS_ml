@@ -1,100 +1,167 @@
+@import url("../../App.css");
+
 .corteCajaContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgb(35, 35, 35);
-}
-
-.generarCorteContainer {
-  padding: 10px;
-  width: 100%;
-  /* background-color: rgb(161, 161, 161); */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.generarCorteContainer button {
-  padding: 32px 16px;
-  max-width: 160px;
-  font-size: 20px;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  background-color: #fc56f1;
-}
-
-.corteCajaTableContainer {
-  background-color: rgba(112, 112, 112, 0.387);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 60%;
-  padding: 20px;
-  border-radius: 6px;
-  margin-top: 60px;
-}
-
-.corteCajaTableContainer table {
-  width: 80%;
-  /* background-color: rgb(199, 199, 199); */
-  font-size: 20px;
-  border-collapse: collapse;
-  color: white;
-}
-
-.corteCajaTableContainer table tr:nth-child(4) {
-  font-size: 26px;
-  /* background-color: #8f8e8e; */
-}
-
-.corteCajaTableContainer table td {
-  padding: 10px;
-  border: solid 1px rgb(240, 240, 240);
-  text-align: right;
-  width: 120px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .corteExitoso {
-  background-color: rgba(112, 112, 112, 0.387);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  padding: 20px;
-  border-radius: 6px;
-  margin-top: 60px;
-  font-size: 26px;
-  color: rgb(35, 35, 35);
+	background-color: rgba(112, 112, 112, 0.387);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 50%;
+	padding: 20px;
+	border-radius: 6px;
+	margin-top: 60px;
+	font-size: 26px;
+	color: rgb(35, 35, 35);
 }
 
 .buttonContainer {
-  display: flex;
-  margin-top: 20px;
-  width: 80%;
-  justify-content: space-around;
+	display: flex;
+	margin-top: 20px;
+	width: 100%;
+	justify-content: space-around;
 }
 
 .corteCajaBtn {
-  padding: 0px 20px;
-  height: 100px;
-  width: 160px;
-  background-color: #fc56f1;
-  font-size: 26px;
-  border: none;
-  border-radius: 6px;
-  color: white;
+	padding: 0px 20px;
+	height: 100px;
+	width: 400px;
+	background-color: #fc56f1;
+	font-size: 26px;
+	border: none;
+	border-radius: 6px;
+	color: white;
 }
 
-.cancelarCorteCajaBtn {
-  padding: 0px 20px;
-  height: 100px;
-  width: 160px;
-  background-color: #898989;
-  font-size: 26px;
-  border: none;
-  border-radius: 6px;
-  color: white;
+.corteCajaTablesFlex {
+	display: flex;
+	gap: 32px;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	width: 100%;
+	height: 400px;
+}
+
+/* TABLE CONTAINER  */
+.tableContainer {
+	background-color: var(--midNightGray);
+	padding: 20px;
+	border-radius: 6px;
+	width: 40%;
+	min-width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+
+.tableContainer h3,
+.expenseContainer h3 {
+	color: white;
+	margin-bottom: 10px;
+}
+
+.tableContainer table {
+	width: 100%;
+	font-size: 20px;
+	border-collapse: collapse;
+	color: white;
+}
+
+.tableContainer table th {
+	background-color: var(--lightMidnight);
+	padding: 10px;
+	text-align: center;
+}
+
+.tableContainer table td {
+	padding: 10px;
+	text-align: right;
+}
+
+.corteTotal {
+	padding: 10px;
+	border-radius: 6px;
+	color: white;
+	width: 44%;
+	font-size: 28px;
+	background-color: rgba(179, 179, 179, 0.19);
+	border: solid 1px #6da6fb;
+	text-align: right;
+	margin-top: auto; /* pushes it to the bottom of the container */
+	margin-left: auto;
+}
+
+/* expense container //////////////////////////////////////////////*/
+
+.expenseContainer {
+	background-color: var(--midNightGray);
+	padding: 20px;
+	border-radius: 6px;
+	width: 40%;
+	min-width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+
+.expenseHeader {
+	border-collapse: collapse;
+	background-color: var(--lightMidnight);
+	width: 100%;
+}
+
+.expenseHeader th {
+	padding: 10px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+/* Adjust the others to balance */
+.expenseHeader th:nth-child(1),
+.expenseHeader th:nth-child(2) {
+	width: 40%;
+}
+
+/* Make the third column smaller */
+.expenseHeader th:nth-child(3) {
+	width: 20%;
+}
+
+.expenseScrollContainer {
+	height: 200px;
+	overflow-y: auto;
+	width: 100%;
+	scrollbar-color: var(--lightMidnight) rgb(149, 149, 149);
+}
+
+.expenseScrollContainer table {
+	width: 100%;
+	border-collapse: collapse;
+	color: white;
+}
+
+.expenseScrollContainer td {
+	text-align: right;
+	padding: 10px;
+}
+
+.gastoTotal {
+	padding: 10px;
+	border-radius: 6px;
+	color: white;
+	width: 44%;
+	font-size: 28px;
+	background-color: rgba(179, 179, 179, 0.19);
+	border: solid 1px var(--darkMelon);
+	text-align: right;
+	margin-top: auto; /* pushes it to the bottom of the container */
+	margin-left: auto;
 }

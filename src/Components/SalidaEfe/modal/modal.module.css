@@ -83,7 +83,7 @@
 	font-weight: bold;
 }
 
-td {
+.modalTable td {
 	border: solid 1px rgb(240, 240, 240);
 	font-size: 20px;
 	padding: 8px 0px;

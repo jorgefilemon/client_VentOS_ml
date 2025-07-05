@@ -1,0 +1,155 @@
+@import url("../../../App.css");
+@import "../../myColors.module.css";
+
+.modalBackground {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(126, 126, 126, 0.885);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(1px);
+}
+
+.modalCashClosing {
+	background-color: var(--midNightGray);
+	width: 600px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 10px;
+}
+
+/* CANCELARBTN CONTAINER */
+.cancelarBtnCtn {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+	height: 60px;
+}
+.cancelarBtnCtn button {
+	width: 60px;
+	border-radius: 6px;
+	border: none;
+	font-size: 26px;
+	background-color: rgba(255, 255, 255, 0.241);
+	color: white;
+}
+
+/* INPUTS CONTAINER */
+
+.modalCashClosing form {
+	width: 100%;
+	padding: 20px;
+	padding-top: 0px;
+	display: flex;
+	padding-left: 92px;
+}
+
+.cashClosingTable {
+	border-collapse: collapse;
+	color: white;
+}
+
+.cashClosingTable th:nth-child(2),
+th:nth-child(3) {
+	min-width: 120px;
+}
+
+.cashClosingTable th:first-child,
+.cashClosingTable td:first-child {
+	border: none;
+	text-align: right;
+	padding-right: 6px;
+}
+
+.cashClosingTable td:nth-child(2) {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.cashClosingTable td,
+.cashClosingTable th {
+	border: none; /* remove all by default */
+}
+
+.cashClosingTable tr:nth-child(3) td {
+	border-bottom: 1px solid white; /* add only on 3rd row */
+}
+
+.cashClosingTable tr:nth-child(8) td {
+	border-bottom: 1px solid white; /* add only on 3rd row */
+}
+
+.cashClosingTable th:nth-child(2),
+.cashClosingTable td:nth-child(2) {
+	background: var(--naranja-bg);
+}
+
+.cashClosingTable th:nth-child(3),
+.cashClosingTable td:nth-child(3) {
+	background: #6da6fb;
+}
+
+.cashClosingTable td:nth-child(3) {
+	padding-left: 10px;
+}
+
+.cashClosingTable th:nth-child(2) {
+	border-top-left-radius: 8px;
+	padding: 10px;
+}
+
+.cashClosingTable th:nth-child(3) {
+	border-top-right-radius: 8px;
+}
+
+.cashClosingTable tr:last-child td:nth-child(2) {
+	/* your styles here */
+	border-bottom-left-radius: 8px;
+	padding-bottom: 10px;
+}
+
+.cashClosingTable tr:last-child td:nth-child(3) {
+	/* your styles here */
+	border-bottom-right-radius: 8px;
+	padding-bottom: 10px;
+}
+
+.cashClosingTable input {
+	width: 50px;
+	margin: 1px;
+	height: 40px;
+	padding-left: 3px;
+	font-size: 14px;
+	border-radius: 4px;
+}
+
+.cashClosingTable td:nth-child(3) input {
+	border: none; /* ← your custom colour & width */
+	box-sizing: border-box; /* keeps the input’s width consistent */
+	/* border-radius: 4px;  */
+}
+
+.cashClosingTable td:nth-child(2) input {
+	border: none; /* ← your custom colour & width */
+	box-sizing: border-box; /* keeps the input’s width consistent */
+	/* border-radius: 4px;  */
+}
+
+/* 2-nd column – when the input IS focused  */
+.cashClosingTable td:nth-child(2) input:focus {
+	border: 2px solid #6da6fb;
+	border-color: #00e0ff; /* or whatever highlight colour you like */
+	outline: 1px solid white; /* optional: hide default blue ring */
+}
+
+.cashClosingTable td:nth-child(3) input:focus {
+	border: 2px solid #6da6fb;
+	border-color: #00e0ff; /* or whatever highlight colour you like */
+	outline: 1px solid white; /* optional: hide default blue ring */
+}
