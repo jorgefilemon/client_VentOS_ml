@@ -8,6 +8,31 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 	return (
 		<>
 			<div className={styles.corteCajaTablesFlex}>
+				{/* GASTOS */}
+				<div className={styles.expenseContainer}>
+					<h3>Gastos</h3>
+
+					<div className={styles.expenseScrollContainer}>
+						<table>
+							<tbody>
+								{expense.map((gasto) => (
+									<tr key={gasto.expense_id}>
+										<td>{gasto.type}</td>
+										<td>{gasto.name}</td>
+										<td>
+											{currencyFormatter.format(
+												gasto.expenseAmount
+											)}
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+					<div className={styles.gastoTotal}>
+						{currencyFormatter.format(expenseTotal)}
+					</div>
+				</div>
 				{/* VENTAS */}
 				<div className={styles.tableContainer}>
 					<h3>Ventas</h3>
@@ -32,7 +57,7 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 								</td>
 							</tr>
 							<tr>
-								<td>Devolucion</td>
+								<td>Devolucion de Efectivo</td>
 								<td>
 									{currencyFormatter.format(
 										corte.cambioCliente
@@ -43,33 +68,6 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 					</table>
 					<div className={styles.corteTotal}>
 						{currencyFormatter.format(corte.total)}
-					</div>
-				</div>
-
-				{/* GASTOS */}
-
-				<div className={styles.expenseContainer}>
-					<h3>Gastos</h3>
-
-					<div className={styles.expenseScrollContainer}>
-						<table>
-							<tbody>
-								{expense.map((gasto) => (
-									<tr key={gasto.expense_id}>
-										<td>{gasto.type}</td>
-										<td>{gasto.name}</td>
-										<td>
-											{currencyFormatter.format(
-												gasto.expenseAmount
-											)}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-					<div className={styles.gastoTotal}>
-						{currencyFormatter.format(expenseTotal)}
 					</div>
 				</div>
 			</div>

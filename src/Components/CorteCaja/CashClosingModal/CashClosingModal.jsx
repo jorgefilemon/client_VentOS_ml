@@ -1,21 +1,16 @@
 import styles from "./cashClosingModal.module.css";
-import { useContext, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 // import { AuthContext } from "../../../Contexts/AuthContext";
 
-const CashClosingModal = ({ setModal, refreshCashFloat }) => {
+const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
 	// const { auth } = useContext(AuthContext);
 
-	const [inputs, setInputs] = useState({
-		c1_2: "",
-		c5: "",
-		c10: "",
-		c20: "",
-		c50: "",
-		c100: "",
-		c200: "",
-		c500: "",
-		c1000: "",
-	});
+	const guardarRow7Ref = useRef(null);
+	useEffect(() => {
+		if (guardarRow7Ref.current) {
+			guardarRow7Ref.current.focus();
+		}
+	}, []);
 
 	const denominations = [
 		{ label: "$0.5, $1, $2", key: "c1_2" },
@@ -29,6 +24,51 @@ const CashClosingModal = ({ setModal, refreshCashFloat }) => {
 		{ label: "$1,000", key: "c1000" },
 	];
 
+	const [dejar, setDejar] = useState({
+		c1_2: "",
+		c5: "",
+		c10: "",
+		c20: "",
+		c50: "",
+		c100: "",
+		c200: "",
+		c500: "",
+		c1000: "",
+	});
+
+	const [guardar, setGuardar] = useState({
+		c1_2: "",
+		c5: "",
+		c10: "",
+		c20: "",
+		c50: "",
+		c100: "",
+		c200: "",
+		c500: "",
+		c1000: "",
+	});
+
+	const [totalCash, setTotalCash] = useState(0);
+
+	useEffect(() => {
+		const calculateSum = (obj) => {
+			return denominations.reduce((total, denomination, index) => {
+				const key = denomination.key;
+				const value = parseFloat(obj[key]) || 0;
+				const multiplier =
+					index === 0
+						? 1
+						: parseFloat(denomination.label.replace(/[$,]/g, ""));
+				return total + value * multiplier;
+			}, 0);
+		};
+
+		const sumGuardar = calculateSum(guardar);
+		const sumDejar = calculateSum(dejar);
+		setTotalCash(sumGuardar + sumDejar - netCash);
+	}, [guardar, dejar]);
+
+	// using keyboard arrow keys
 	const handleKeyDown = (e) => {
 		const { key } = e;
 
@@ -62,13 +102,32 @@ const CashClosingModal = ({ setModal, refreshCashFloat }) => {
 		nextInput?.focus();
 	};
 	// gives $0.00 for placeholder
+
 	const currencyPlaceholder = new Intl.NumberFormat("en-US", {
 		style: "currency",
 		currency: "USD",
 	}).format(0);
 
+	const currencyFormatter = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+	});
+
 	const handleFocus = (e) => {
 		e.target.select();
+	};
+
+	const getCorteLabel = () => {
+		if (totalCash === 0) return "Corte exacto";
+
+		const absValue = Math.abs(totalCash).toFixed(2);
+		const isSingular = parseFloat(absValue) === 1;
+
+		if (totalCash > 0) {
+			return `Sobra${isSingular ? "" : "n"} $${absValue}`;
+		} else {
+			return `Falta${isSingular ? "" : "n"} $${absValue}`;
+		}
 	};
 
 	// const handleSubmit = async () => {
@@ -105,8 +164,13 @@ const CashClosingModal = ({ setModal, refreshCashFloat }) => {
 	return (
 		<div className={styles.modalBackground}>
 			<div className={styles.modalCashClosing}>
-				<div className={styles.cancelarBtnCtn}>
-					<button onClick={() => setModal(false)}>x</button>
+				<div className={styles.cancelarCtn}>
+					<button onClick={() => setCashClosingModal(false)}>
+						x
+					</button>
+				</div>
+				<div className={styles.cashInCashierCtn}>
+					<p>Efectivo en caja: {currencyFormatter.format(netCash)}</p>
 				</div>
 
 				<form>
@@ -122,45 +186,79 @@ const CashClosingModal = ({ setModal, refreshCashFloat }) => {
 							{denominations.map((denom, rowIndex) => (
 								<tr key={denom.key}>
 									<td>{denom.label}</td>
+
+									{/* Dejar en caja column */}
 									<td>
 										<input
 											type="number"
 											data-col="0"
 											data-row={rowIndex}
-											value={inputs[denom.key]}
+											value={dejar[denom.key]}
 											placeholder={
 												rowIndex === 0
 													? currencyPlaceholder
 													: ""
 											}
 											onChange={(e) =>
-												setInputs((prev) => ({
+												setDejar((prev) => ({
 													...prev,
 													[denom.key]: e.target.value,
 												}))
 											}
+											onBlur={(e) => {
+												if (
+													rowIndex === 0 &&
+													e.target.value
+												) {
+													const formatted =
+														parseFloat(
+															e.target.value
+														).toFixed(2);
+													setDejar((prev) => ({
+														...prev,
+														[denom.key]: formatted,
+													}));
+												}
+											}}
 											className="input"
 											onFocus={handleFocus}
-											onKeyDown={(e) => handleKeyDown(e)}
+											onKeyDown={handleKeyDown}
 										/>
 									</td>
+
+									{/* Guardar column */}
 									<td>
 										<input
 											type="number"
 											data-col="1"
 											data-row={rowIndex}
+											value={guardar[denom.key]}
 											placeholder={
 												rowIndex === 0
 													? currencyPlaceholder
 													: ""
 											}
-											value={inputs[denom.key]} // or another state if needed
 											onChange={(e) =>
-												setInputs((prev) => ({
+												setGuardar((prev) => ({
 													...prev,
 													[denom.key]: e.target.value,
 												}))
 											}
+											onBlur={(e) => {
+												if (
+													rowIndex === 0 &&
+													e.target.value
+												) {
+													const formatted =
+														parseFloat(
+															e.target.value
+														).toFixed(2);
+													setGuardar((prev) => ({
+														...prev,
+														[denom.key]: formatted,
+													}));
+												}
+											}}
 											className="input"
 											onFocus={handleFocus}
 											onKeyDown={handleKeyDown}
@@ -170,6 +268,12 @@ const CashClosingModal = ({ setModal, refreshCashFloat }) => {
 							))}
 						</tbody>
 					</table>
+					<div className={styles.cashTotal}>
+						<p>{getCorteLabel()}</p>
+					</div>
+					<button className={styles.cashclosingButton}>
+						hacer corte
+					</button>
 				</form>
 			</div>
 		</div>

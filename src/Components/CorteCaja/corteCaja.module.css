@@ -8,6 +8,22 @@
 	align-items: center;
 }
 
+.netCashCtn {
+	display: flex;
+	background-color: var(--midNightGray);
+	width: 50%;
+	justify-content: center;
+	color: white;
+	align-items: center;
+	margin-top: 20px;
+	border-radius: 6px;
+	font-size: 36px;
+}
+
+.netCashCtn p {
+	padding-bottom: 4px;
+}
+
 .corteExitoso {
 	background-color: rgba(112, 112, 112, 0.387);
 	display: flex;
@@ -30,8 +46,8 @@
 
 .corteCajaBtn {
 	padding: 0px 20px;
-	height: 100px;
-	width: 400px;
+	height: 90px;
+	width: 500px;
 	background-color: #fc56f1;
 	font-size: 26px;
 	border: none;
@@ -41,10 +57,10 @@
 
 .corteCajaTablesFlex {
 	display: flex;
-	gap: 32px;
+	gap: 30px;
 	justify-content: center;
 	flex-wrap: wrap;
-	margin-top: 40px;
+	margin-top: 20px;
 	width: 100%;
 	height: 400px;
 }
@@ -83,6 +99,7 @@
 .tableContainer table td {
 	padding: 10px;
 	text-align: right;
+	border: 1px solid white;
 }
 
 .corteTotal {
@@ -146,11 +163,13 @@
 	width: 100%;
 	border-collapse: collapse;
 	color: white;
+	font-size: 18px;
 }
 
 .expenseScrollContainer td {
 	text-align: right;
 	padding: 10px;
+	border: 1px solid white;
 }
 
 .gastoTotal {

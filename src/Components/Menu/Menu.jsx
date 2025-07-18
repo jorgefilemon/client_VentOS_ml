@@ -61,7 +61,7 @@ const Menu = () => {
 					PUNTO VENTA
 				</NavLink>
 				<NavLink to="/CashFloat" className="link notSelected">
-					CAJA CHICA
+					CAJA
 				</NavLink>
 				<NavLink to="/corte" className="link notSelected">
 					CORTE

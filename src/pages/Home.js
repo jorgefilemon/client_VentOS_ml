@@ -59,6 +59,7 @@ function Home() {
 	return (
 		<div className="container">
 			<ProductsContext.Provider value={{ products, setproducts }}>
+				
 				<Nav
 					setOpenModal={setOpenModal}
 					setOpenAjuste={setOpenAjuste}

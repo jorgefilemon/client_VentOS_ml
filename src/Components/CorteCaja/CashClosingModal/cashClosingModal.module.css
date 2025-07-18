@@ -19,35 +19,50 @@
 	width: 600px;
 	border-radius: 6px;
 	display: flex;
-	align-items: center;
 	flex-direction: column;
-	padding: 10px;
+	padding: 12px;
 }
 
 /* CANCELARBTN CONTAINER */
-.cancelarBtnCtn {
+
+.modalCashClosing .cancelarCtn {
 	display: flex;
-	justify-content: end;
-	width: 100%;
-	height: 60px;
+	justify-content: flex-end; /* pushes button to the right */
 }
-.cancelarBtnCtn button {
+.modalCashClosing .cancelarCtn button {
 	width: 60px;
 	border-radius: 6px;
 	border: none;
 	font-size: 26px;
 	background-color: rgba(255, 255, 255, 0.241);
 	color: white;
+	height: 60px;
 }
 
-/* INPUTS CONTAINER */
-
-.modalCashClosing form {
-	width: 100%;
-	padding: 20px;
-	padding-top: 0px;
+/* CASH IN CASHIER CTN */
+.cashInCashierCtn {
 	display: flex;
-	padding-left: 92px;
+	justify-content: center;
+	color: rgb(158, 158, 158);
+}
+.cashInCashierCtn p {
+	font-size: 36px;
+}
+
+/* form CONTAINER */
+.modalCashClosing form {
+	padding: 10px;
+	width: 80%;
+	margin: 0 auto; /* Centers the form horizontally */
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.modalCashClosing form button {
+	height: 60px;
+	border-radius: 8px;
+	border: none;
 }
 
 .cashClosingTable {
@@ -56,7 +71,7 @@
 }
 
 .cashClosingTable th:nth-child(2),
-th:nth-child(3) {
+.cashClosingTable th:nth-child(3) {
 	min-width: 120px;
 }
 
@@ -74,15 +89,22 @@ th:nth-child(3) {
 
 .cashClosingTable td,
 .cashClosingTable th {
-	border: none; /* remove all by default */
+	height: 40px;
 }
 
 .cashClosingTable tr:nth-child(3) td {
-	border-bottom: 1px solid white; /* add only on 3rd row */
+	border-bottom: 3px solid var(--midNightGray);
+	width: 600px;
 }
 
-.cashClosingTable tr:nth-child(8) td {
-	border-bottom: 1px solid white; /* add only on 3rd row */
+.cashClosingTable tr:nth-child(3) td {
+	border-bottom: 3px solid var(--midNightGray);
+	width: 600px;
+}
+
+.cashClosingTable tr:nth-child(9) td {
+	border-top: 3px solid var(--midNightGray);
+	width: 600px;
 }
 
 .cashClosingTable th:nth-child(2),
@@ -93,6 +115,7 @@ th:nth-child(3) {
 .cashClosingTable th:nth-child(3),
 .cashClosingTable td:nth-child(3) {
 	background: #6da6fb;
+	min-height: 44px;
 }
 
 .cashClosingTable td:nth-child(3) {
@@ -112,31 +135,32 @@ th:nth-child(3) {
 	/* your styles here */
 	border-bottom-left-radius: 8px;
 	padding-bottom: 10px;
+	padding-top: 1px;
 }
 
 .cashClosingTable tr:last-child td:nth-child(3) {
 	/* your styles here */
 	border-bottom-right-radius: 8px;
 	padding-bottom: 10px;
+	padding-top: 1px;
 }
 
 .cashClosingTable input {
 	width: 50px;
-	margin: 1px;
-	height: 40px;
-	padding-left: 3px;
-	font-size: 14px;
-	border-radius: 4px;
+	height: 36px;
+	text-align: right;
+	padding-right: 4px;
+	font-size: 16px;
 }
 
 .cashClosingTable td:nth-child(3) input {
-	border: none; /* ← your custom colour & width */
+	border: 1px solid #6da6fb;
 	box-sizing: border-box; /* keeps the input’s width consistent */
 	/* border-radius: 4px;  */
 }
 
 .cashClosingTable td:nth-child(2) input {
-	border: none; /* ← your custom colour & width */
+	border: 1px solid var(--naranja-bg);
 	box-sizing: border-box; /* keeps the input’s width consistent */
 	/* border-radius: 4px;  */
 }
@@ -152,4 +176,20 @@ th:nth-child(3) {
 	border: 2px solid #6da6fb;
 	border-color: #00e0ff; /* or whatever highlight colour you like */
 	outline: 1px solid white; /* optional: hide default blue ring */
+}
+
+/* //CASH TOTAL */
+
+form .cashTotal {
+	display: flex;
+	flex-direction: column; /* or row if needed */
+	align-items: center; /* centers child horizontally */
+
+	width: 50%;
+	margin: 0 auto; /* 👈 this centers it horizontally */
+	color: white;
+}
+
+form .cashTotal p {
+	font-size: 30px;
 }

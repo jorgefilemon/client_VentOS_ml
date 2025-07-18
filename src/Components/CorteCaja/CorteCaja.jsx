@@ -15,10 +15,17 @@ const CorteCaja = () => {
 	const [corte, setCorte] = useState({
 		efectivo: "",
 		tarjeta: "",
-		total: "",
 		cambioCliente: "",
+		total: "",
 	});
 	const [cashClosingModal, setCashClosingModal] = useState(false);
+
+	const netCash = corte.efectivo - corte.cambioCliente - expenseTotal;
+
+	const currencyFormatter = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+	});
 
 	const revisarCorte = async () => {
 		try {
@@ -73,18 +80,28 @@ const CorteCaja = () => {
 				expense={expense}
 				expenseTotal={expenseTotal}
 			/>
+			<div className={styles.netCashCtn}>
+				<p>
+					Efectivo en Caja{" "}
+					{corte.efectivo && currencyFormatter.format(netCash)}
+				</p>
+			</div>
 			<div className={styles.buttonContainer}>
 				<button className={styles.corteCajaBtn} onClick={hacerCorte}>
 					Hacer Corte
 				</button>
 			</div>
-
 			{/* {mensaje && (
 				<div className={styles.corteExitoso}>
 					Corte realizado con exito
 				</div>
 			)} */}
-			{cashClosingModal && <CashClosingModal />}
+			{cashClosingModal && (
+				<CashClosingModal
+					netCash={netCash}
+					setCashClosingModal={setCashClosingModal}
+				/>
+			)}
 		</div>
 	);
 };

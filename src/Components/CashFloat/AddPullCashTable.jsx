@@ -4,7 +4,7 @@ import styles from "./addPullCashTable.module.css";
 const AddPullCashTable = ({ cashFloat, denominationMap, mode }) => {
 	return (
 		<>
-			<div className={styles.cashFloat_table_container}>
+			<div className={styles.cashFloatTableContainer}>
 				{cashFloat.length > 0 && (
 					<table>
 						<thead>
