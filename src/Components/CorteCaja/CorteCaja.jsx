@@ -3,13 +3,14 @@ import styles from "./corteCaja.module.css";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 import CashClosingModal from "./CashClosingModal/CashClosingModal";
+// import { useCashInCashier } from "../../Contexts/CashInCashierContext";
 
 import CorteCajaPanel from "./CorteCajaPanel";
 
 const CorteCaja = () => {
-	const { auth } = useContext(AuthContext);
+	// const { auth } = useContext(AuthContext);
 	const [openCorte, setOpenCorte] = useState(false);
-	const [mensaje, setMensaje] = useState(false);
+
 	const [expense, setExpenses] = useState([]);
 	const [expenseTotal, setExpenseTotal] = useState(0);
 	const [corte, setCorte] = useState({
@@ -17,10 +18,18 @@ const CorteCaja = () => {
 		tarjeta: "",
 		cambioCliente: "",
 		total: "",
+		totalCashFloat: "",
+		totalCashPulled: "",
 	});
 	const [cashClosingModal, setCashClosingModal] = useState(false);
+	// const { cashInCashier } = useCashInCashier();
 
-	const netCash = corte.efectivo - corte.cambioCliente - expenseTotal;
+	const netCash =
+		corte.efectivo -
+		corte.cambioCliente -
+		expenseTotal +
+		Number(corte.totalCashFloat) -
+		Number(corte.totalCashPulled);
 
 	const currencyFormatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
@@ -40,6 +49,8 @@ const CorteCaja = () => {
 				tarjeta: response.data.card,
 				total: response.data.total,
 				cambioCliente: response.data.cambioCliente,
+				totalCashFloat: response.data.totalCashFloat,
+				totalCashPulled: response.data.totalCashPulled,
 			}));
 
 			if (response.data.expense) {
@@ -81,10 +92,35 @@ const CorteCaja = () => {
 				expenseTotal={expenseTotal}
 			/>
 			<div className={styles.netCashCtn}>
-				<p>
-					Efectivo en Caja{" "}
-					{corte.efectivo && currencyFormatter.format(netCash)}
-				</p>
+				<div className={styles.sumCash}>
+					<div>Total Efectivo</div>
+					<div>
+						{currencyFormatter.format(
+							corte.efectivo - corte.cambioCliente
+						)}
+					</div>
+				</div>
+				<p>+</p>
+				<div className={styles.sumCash}>
+					<div>Agregado</div>
+					<div>{currencyFormatter.format(corte.totalCashFloat)}</div>
+				</div>
+				<p>-</p>
+				<div className={styles.substractCash}>
+					<div>Gastos</div>
+					<div>{currencyFormatter.format(expenseTotal)}</div>
+				</div>
+				<p>-</p>
+
+				<div className={styles.sumCash}>
+					<div>Guardado</div>
+					<div>{currencyFormatter.format(corte.totalCashPulled)}</div>
+				</div>
+				<p>=</p>
+				<div className={styles.sumNetCash}>
+					<div>Efectivo en Caja</div>
+					<div>{currencyFormatter.format(netCash)}</div>
+				</div>
 			</div>
 			<div className={styles.buttonContainer}>
 				<button className={styles.corteCajaBtn} onClick={hacerCorte}>
@@ -100,6 +136,7 @@ const CorteCaja = () => {
 				<CashClosingModal
 					netCash={netCash}
 					setCashClosingModal={setCashClosingModal}
+					corte={corte}
 				/>
 			)}
 		</div>

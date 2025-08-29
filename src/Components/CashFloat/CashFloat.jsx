@@ -3,6 +3,7 @@ import ModalAddCash from "./ModalAddCash";
 import ModalPullCash from "./ModalPullCash";
 import AddPullCashTable from "./AddPullCashTable";
 import { useState, useEffect } from "react";
+import { useCashInCashier } from "../../Contexts/CashInCashierContext"; // adjust the path if needed
 
 const CashFloat = () => {
 	const [modalAddCash, setModal] = useState(false);
@@ -13,7 +14,7 @@ const CashFloat = () => {
 	//
 	const [cashPull, setCashPull] = useState([]);
 	const [pullTotal, setPullTotal] = useState(0);
-
+	const { setCashInCashier } = useCashInCashier();
 	const denominationMap = [
 		{ label: "$1, $2", key: "c1_2" },
 		{ label: "$5", key: "c5" },
@@ -46,6 +47,7 @@ const CashFloat = () => {
 			const dataFloat = await resFloat.json();
 			setCashFloat(dataFloat.cash);
 			setTotalCash(dataFloat.totalCash);
+			setCashInCashier(dataFloat.totalCash); // <- update shared context here ✅
 
 			// Fetch for addPull
 			const resPull = await fetch(

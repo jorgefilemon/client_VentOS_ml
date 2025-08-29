@@ -59,7 +59,7 @@
 	color: white;
 	font-size: 28px;
 	background-color: rgba(179, 179, 179, 0.19);
-	border: solid 1px var(--darkMelon);
+	/* border: solid 1px var(--darkMelon); */
 	text-align: right;
 }
 

@@ -1,9 +1,15 @@
 import styles from "./cashClosingModal.module.css";
-import { useEffect, useState, useRef } from "react";
-// import { AuthContext } from "../../../Contexts/AuthContext";
+import { useEffect, useState, useRef, useContext } from "react";
+import { AuthContext } from "../../../Contexts/AuthContext";
+import Axios from "axios";
 
-const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
-	// const { auth } = useContext(AuthContext);
+const CashClosingModal = ({
+	setModal,
+	corte,
+	setCashClosingModal,
+	netCash,
+}) => {
+	const { auth } = useContext(AuthContext);
 
 	const guardarRow7Ref = useRef(null);
 	useEffect(() => {
@@ -49,6 +55,8 @@ const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
 	});
 
 	const [totalCash, setTotalCash] = useState(0);
+	const [openCorte, setOpenCorte] = useState(false);
+	const [mensaje, setMensaje] = useState(false);
 
 	useEffect(() => {
 		const calculateSum = (obj) => {
@@ -127,6 +135,40 @@ const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
 			return `Sobra${isSingular ? "" : "n"} $${absValue}`;
 		} else {
 			return `Falta${isSingular ? "" : "n"} $${absValue}`;
+		}
+	};
+
+	// const hacerCorte = () => {
+	// 	Axios.post("https://localhost:3001/corte", { usu_id: auth.id }).then(
+	// 		(res) => {
+	// 			console.log(res.data);
+	// 		}
+	// 	);
+	// 	setOpenCorte(false);
+	// 	setMensaje(true);
+	// };
+
+	const hacerCorte = async () => {
+		try {
+			const dataToSend = {
+				usu_id: auth.id,
+				...guardar,
+				...dejar,
+				...totalCash, // this spreads your coin/bill values
+			};
+
+			const res = await Axios.post(
+				"https://localhost:3001/corte",
+				dataToSend
+			);
+			console.log("Corte + cash float response:", res.data);
+
+			setOpenCorte(false);
+			setMensaje(true);
+			setModal(false);
+		} catch (error) {
+			console.error("Error submitting corte and cash float:", error);
+			alert("Error submitting data. Please try again.");
 		}
 	};
 
@@ -233,6 +275,12 @@ const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
 											data-col="1"
 											data-row={rowIndex}
 											value={guardar[denom.key]}
+											ref={
+												rowIndex ===
+												denominations.length - 2
+													? guardarRow7Ref
+													: null
+											}
 											placeholder={
 												rowIndex === 0
 													? currencyPlaceholder
@@ -268,14 +316,28 @@ const CashClosingModal = ({ setModal, setCashClosingModal, netCash }) => {
 							))}
 						</tbody>
 					</table>
-					<div className={styles.cashTotal}>
+					<div
+						className={
+							totalCash < 0
+								? styles.cashMissing
+								: styles.cashTotal
+						}
+					>
 						<p>{getCorteLabel()}</p>
 					</div>
-					<button className={styles.cashclosingButton}>
-						hacer corte
+					<button
+						className={styles.cashclosingButton}
+						onClick={hacerCorte}
+					>
+						CORTAR
 					</button>
 				</form>
 			</div>
+			{mensaje && (
+				<div className={styles.corteExitoso}>
+					Corte realizado con exito
+				</div>
+			)}
 		</div>
 	);
 };

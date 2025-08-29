@@ -14,6 +14,7 @@ import CashFloat from "./pages/CashFloat";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import { AuthContext } from "../src/Contexts/AuthContext";
 import Menu from "./Components/Menu/Menu";
+import { CashInCashierProvider } from "../src/Contexts/CashInCashierContext";
 
 function App() {
 	const [auth, setAuth] = useState({
@@ -27,26 +28,37 @@ function App() {
 	return (
 		<Router>
 			<AuthContext.Provider value={{ auth, setAuth }}>
-				<Routes>
-					<Route path="/login" element={<Login />} />
-					<Route path="*" element={<Login />} />
-					<Route element={<PrivateRoutes />}>
-						<Route
-							element={
-								<>
-									<Menu />
-									<Outlet />
-								</>
-							}
-						>
-							<Route path="/" element={<Home />} exact />
-							<Route path="/cashFloat" element={<CashFloat />} />
-							<Route path="/corte" element={<Corte />} />
-							<Route path="/salidaEfe" element={<SalidaPage />} />
-							<Route path="/soldPage" element={<SoldPage />} />
+				<CashInCashierProvider>
+					<Routes>
+						<Route path="/login" element={<Login />} />
+						<Route path="*" element={<Login />} />
+						<Route element={<PrivateRoutes />}>
+							<Route
+								element={
+									<>
+										<Menu />
+										<Outlet />
+									</>
+								}
+							>
+								<Route path="/" element={<Home />} exact />
+								<Route
+									path="/cashFloat"
+									element={<CashFloat />}
+								/>
+								<Route path="/corte" element={<Corte />} />
+								<Route
+									path="/salidaEfe"
+									element={<SalidaPage />}
+								/>
+								<Route
+									path="/soldPage"
+									element={<SoldPage />}
+								/>
+							</Route>
 						</Route>
-					</Route>
-				</Routes>
+					</Routes>
+				</CashInCashierProvider>
 			</AuthContext.Provider>
 		</Router>
 	);

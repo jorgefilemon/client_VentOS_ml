@@ -169,13 +169,13 @@
 .cashClosingTable td:nth-child(2) input:focus {
 	border: 2px solid #6da6fb;
 	border-color: #00e0ff; /* or whatever highlight colour you like */
-	outline: 1px solid white; /* optional: hide default blue ring */
+	outline: 3px solid #b2f6ff; /* optional: hide default blue ring */
 }
 
 .cashClosingTable td:nth-child(3) input:focus {
 	border: 2px solid #6da6fb;
 	border-color: #00e0ff; /* or whatever highlight colour you like */
-	outline: 1px solid white; /* optional: hide default blue ring */
+	outline: 3px solid #b2f6ff; /* optional: hide default blue ring */
 }
 
 /* //CASH TOTAL */
@@ -185,11 +185,34 @@ form .cashTotal {
 	flex-direction: column; /* or row if needed */
 	align-items: center; /* centers child horizontally */
 
-	width: 50%;
+	width: 90%;
 	margin: 0 auto; /* 👈 this centers it horizontally */
 	color: white;
 }
 
 form .cashTotal p {
 	font-size: 30px;
+}
+
+form .cashMissing {
+	display: flex;
+	flex-direction: column; /* or row if needed */
+	align-items: center; /* centers child horizontally */
+
+	width: 90%;
+	margin: 0 auto; /* 👈 this centers it horizontally */
+	color: white;
+}
+
+form .cashMissing p {
+	color: #f8568c;
+	font-size: 30px;
+}
+
+/* Button */
+
+.cashclosingButton {
+	background-color: #6da6fb;
+	font-size: 30px;
+	color: white;
 }

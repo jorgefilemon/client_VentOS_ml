@@ -4,7 +4,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import Axios from "axios";
 
 const PrivateRoutes = () => {
-	const { setAuth } = useContext(AuthContext);
+	const { auth, setAuth } = useContext(AuthContext);
 
 	const [authorized, setAuthorized] = useState(null);
 	useEffect(() => {
@@ -23,6 +23,8 @@ const PrivateRoutes = () => {
 					name: data.nombre,
 					mercadoConnection: data.connected,
 				});
+
+				console.log(auth);
 
 				// Update authorization status based on the response
 				data.logged ? setAuthorized(true) : setAuthorized(false);

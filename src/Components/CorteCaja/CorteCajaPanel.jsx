@@ -20,6 +20,7 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 										<td>{gasto.type}</td>
 										<td>{gasto.name}</td>
 										<td>
+											-
 											{currencyFormatter.format(
 												gasto.expenseAmount
 											)}
@@ -30,7 +31,7 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 						</table>
 					</div>
 					<div className={styles.gastoTotal}>
-						{currencyFormatter.format(expenseTotal)}
+						-{currencyFormatter.format(expenseTotal)}
 					</div>
 				</div>
 				{/* VENTAS */}
@@ -51,23 +52,32 @@ const CorteCajaPanel = ({ corte, expense, expenseTotal }) => {
 								</td>
 							</tr>
 							<tr>
-								<td>Tarjeta</td>
+								<td>Devolucion Efectivo</td>
 								<td>
-									{currencyFormatter.format(corte.tarjeta)}
-								</td>
-							</tr>
-							<tr>
-								<td>Devolucion de Efectivo</td>
-								<td>
+									-
 									{currencyFormatter.format(
 										corte.cambioCliente
 									)}
 								</td>
 							</tr>
+							<tr>
+								<td>Total Efectivo</td>
+								<td>
+									{currencyFormatter.format(
+										corte.efectivo - corte.cambioCliente
+									)}
+								</td>
+							</tr>
+							<tr>
+								<td>Tarjeta</td>
+								<td>
+									{currencyFormatter.format(corte.tarjeta)}
+								</td>
+							</tr>
 						</tbody>
 					</table>
 					<div className={styles.corteTotal}>
-						{currencyFormatter.format(corte.total)}
+						Venta Total {currencyFormatter.format(corte.total)}
 					</div>
 				</div>
 			</div>

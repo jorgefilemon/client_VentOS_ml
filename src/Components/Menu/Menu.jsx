@@ -10,12 +10,12 @@ import { AuthContext } from "../../Contexts/AuthContext";
 import "react-datepicker/dist/react-datepicker.css";
 // import moment from "moment";
 // import "moment/locale/es";
-
+import { useCashInCashier } from "../../Contexts/CashInCashierContext";
 const Menu = () => {
 	const { auth, setAuth } = useContext(AuthContext);
 	const [shoeSellsInPeriod, setShoeSellsInPeriod] = useState(null);
 	const [daysPeriod, setDaysPeriod] = useState(null);
-
+	const { cashInCashier } = useCashInCashier();
 	// let month = moment().locale("es").format("MMM");
 	// month = month.replace(".", "");
 
@@ -62,6 +62,7 @@ const Menu = () => {
 				</NavLink>
 				<NavLink to="/CashFloat" className="link notSelected">
 					CAJA
+					{/* CAJA ${cashInCashier} */}
 				</NavLink>
 				<NavLink to="/corte" className="link notSelected">
 					CORTE

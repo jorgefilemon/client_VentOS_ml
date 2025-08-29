@@ -8,21 +8,10 @@
 	align-items: center;
 }
 
-.netCashCtn {
-	display: flex;
-	background-color: var(--midNightGray);
-	width: 50%;
-	justify-content: center;
-	color: white;
-	align-items: center;
-	margin-top: 20px;
-	border-radius: 6px;
-	font-size: 36px;
-}
-
-.netCashCtn p {
+/* .netCashCtn p {
 	padding-bottom: 4px;
-}
+
+} */
 
 .corteExitoso {
 	background-color: rgba(112, 112, 112, 0.387);
@@ -35,24 +24,6 @@
 	margin-top: 60px;
 	font-size: 26px;
 	color: rgb(35, 35, 35);
-}
-
-.buttonContainer {
-	display: flex;
-	margin-top: 20px;
-	width: 100%;
-	justify-content: space-around;
-}
-
-.corteCajaBtn {
-	padding: 0px 20px;
-	height: 90px;
-	width: 500px;
-	background-color: #fc56f1;
-	font-size: 26px;
-	border: none;
-	border-radius: 6px;
-	color: white;
 }
 
 .corteCajaTablesFlex {
@@ -70,7 +41,7 @@
 	background-color: var(--midNightGray);
 	padding: 20px;
 	border-radius: 6px;
-	width: 40%;
+	width: 43%;
 	min-width: 300px;
 	display: flex;
 	flex-direction: column;
@@ -102,11 +73,15 @@
 	border: 1px solid white;
 }
 
+.tableContainer table tr:nth-child(2) td:nth-child(2) {
+	color: var(--darkMelon);
+}
+
 .corteTotal {
 	padding: 10px;
 	border-radius: 6px;
 	color: white;
-	width: 44%;
+	/* width: 44%; */
 	font-size: 28px;
 	background-color: rgba(179, 179, 179, 0.19);
 	border: solid 1px #6da6fb;
@@ -172,10 +147,14 @@
 	border: 1px solid white;
 }
 
+.expenseScrollContainer td:nth-child(3) {
+	color: var(--darkMelon);
+}
+
 .gastoTotal {
 	padding: 10px;
 	border-radius: 6px;
-	color: white;
+	color: var(--darkMelon);
 	width: 44%;
 	font-size: 28px;
 	background-color: rgba(179, 179, 179, 0.19);
@@ -183,4 +162,72 @@
 	text-align: right;
 	margin-top: auto; /* pushes it to the bottom of the container */
 	margin-left: auto;
+}
+.netCashCtn {
+	display: flex;
+	/* background-color: var(--midNightGray); */
+	width: 100%;
+	justify-content: center;
+	color: white;
+	align-items: center;
+	margin-top: 10px;
+	border-radius: 6px;
+	font-size: 20px;
+}
+
+.netCashCtn p {
+	font-size: 40px;
+	margin: 2px;
+}
+
+.netCashCtn .sumCash {
+	border-radius: 8px;
+	border: 3px solid #6da6fb;
+	padding: 6px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 140px;
+}
+
+.netCashCtn .substractCash {
+	border-radius: 8px;
+	border: 3px solid var(--darkMelon);
+	padding: 6px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 140px;
+}
+
+.netCashCtn .substractCash div:nth-child(2) {
+	color: var(--darkMelon);
+}
+
+.netCashCtn .sumNetCash {
+	border-radius: 8px;
+	border: 3px solid white;
+	padding: 6px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 140px;
+}
+
+.buttonContainer {
+	display: flex;
+	margin-top: 10px;
+	width: 100%;
+	justify-content: space-around;
+}
+
+.corteCajaBtn {
+	padding: 0px 20px;
+	height: 90px;
+	width: 600px;
+	background-color: #6da6fb;
+	font-size: 26px;
+	border: none;
+	border-radius: 6px;
+	color: white;
 }
