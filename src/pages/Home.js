@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AjustePrecio from "../Components/AjustePrecio/AjustePrecio";
 import Nav from "../Components/Nav";
@@ -15,6 +15,8 @@ import Vales from "../Components/Vales/Vales";
 import UsarVale from "../Components/UsarVale/UsarVale";
 import DevolucionDinero from "../Components/DevolucionDinero/DevolucionDinero";
 import CambioModal from "../Components/CambioModal/CambioModal";
+import { useCashInCashier } from "../Contexts/CashInCashierContext";
+import AddCashToDrawer from "../Components/AddCashToDrawer/AddCashToDrawer";
 
 function Home() {
 	//1
@@ -40,6 +42,8 @@ function Home() {
 
 	// 9 state of modals setModals Active or Not
 	const [modalsActive, setModalsActive] = useState(false);
+	// modal to add money
+	const [showAddCashToDrawer, setAddCashToDrawer] = useState(false);
 
 	const resultado = products.reduce(
 		(total, currentValue) =>
@@ -53,13 +57,23 @@ function Home() {
 		0
 	);
 
+	const { cashInCashier } = useCashInCashier();
+
+	const cashValue = parseFloat(cashInCashier.cashAdded);
+
+	useEffect(() => {
+		// ✅ only run once when Home first mounts
+		if (!isNaN(cashValue) && cashValue < 85) {
+			setAddCashToDrawer(true);
+		}
+	}, [cashValue]); // ✅ runs once per login session
+
 	// const { auth } = useContext(AuthContext);
 	// // verifies if a session exists
 
 	return (
 		<div className="container">
 			<ProductsContext.Provider value={{ products, setproducts }}>
-				
 				<Nav
 					setOpenModal={setOpenModal}
 					setOpenAjuste={setOpenAjuste}
@@ -136,6 +150,10 @@ function Home() {
 						setOpenDevolucionDinero={setOpenDevolucionDinero}
 						setModalsActive={setModalsActive}
 					/>
+				)}
+
+				{showAddCashToDrawer && (
+					<AddCashToDrawer setAddCashToDrawer={setAddCashToDrawer} />
 				)}
 			</ProductsContext.Provider>
 		</div>

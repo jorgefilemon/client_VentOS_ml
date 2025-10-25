@@ -17,14 +17,13 @@ const PrivateRoutes = () => {
 				const data = res.data;
 
 				// Update the authentication state with the response data
-				setAuth({
+				setAuth((prev) => ({
+					...prev,
 					logged: data.logged,
 					id: data.usu_id,
 					name: data.nombre,
 					mercadoConnection: data.connected,
-				});
-
-				console.log(auth);
+				}));
 
 				// Update authorization status based on the response
 				data.logged ? setAuthorized(true) : setAuthorized(false);
@@ -40,8 +39,8 @@ const PrivateRoutes = () => {
 	if (authorized === null) {
 		return null;
 	}
-
-	return authorized ? <Outlet /> : <Navigate to="/login" />;
+	// Prevents creating back-stack entries for /login on redirects.
+	return authorized ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoutes;

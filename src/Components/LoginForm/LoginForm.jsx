@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext";
 import ConnectingModal from "./ConnectingModal";
+import CorteExitoso from "./CorteExitoso";
 
 import { useRef, useEffect, useState, useContext } from "react";
 
@@ -11,9 +12,6 @@ const LoginForm = () => {
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const { auth, setAuth } = useContext(AuthContext);
-	const [mercadoConn, setMercadoConn] = useState(false);
-
-	console.log("login", auth);
 
 	const navigate = useNavigate();
 	const refInput = useRef();
@@ -56,10 +54,13 @@ const LoginForm = () => {
 			if (data.message) {
 				setErrorMessage(data.message);
 			} else {
-				setAuth((prevAuth) => ({ ...prevAuth, logged: data.logged }));
+				setAuth((prevAuth) => ({
+					...prevAuth,
+					logged: data.logged,
+				}));
+
 				// setMercadoConn(true);
 				login();
-				//navigate("/"); // Navigate to the main page
 			}
 		} catch (error) {
 			console.error("Error during login:", error);
@@ -95,7 +96,8 @@ const LoginForm = () => {
 					<button type="submit">Ingresar</button>
 				</form>
 			</div>
-			{mercadoConn && <ConnectingModal />}
+			{auth.mercadoConn && <ConnectingModal />}
+			{auth.corteExitoso && <CorteExitoso />}
 		</div>
 	);
 };

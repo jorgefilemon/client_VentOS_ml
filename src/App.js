@@ -11,6 +11,7 @@ import SalidaPage from "./pages/SalidaEfePage";
 import SoldPage from "./pages/SoldPage";
 import Corte from "./pages/Corte";
 import CashFloat from "./pages/CashFloat";
+
 import PrivateRoutes from "./utils/PrivateRoutes";
 import { AuthContext } from "../src/Contexts/AuthContext";
 import Menu from "./Components/Menu/Menu";
@@ -21,6 +22,8 @@ function App() {
 		logged: null,
 		user: "",
 		id: "",
+		corteExitoso: false,
+		mercadoConn: false,
 	});
 
 	// console.log(auth);
@@ -31,6 +34,7 @@ function App() {
 				<CashInCashierProvider>
 					<Routes>
 						<Route path="/login" element={<Login />} />
+
 						<Route path="*" element={<Login />} />
 						<Route element={<PrivateRoutes />}>
 							<Route

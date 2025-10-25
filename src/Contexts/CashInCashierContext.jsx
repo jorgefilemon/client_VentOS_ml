@@ -6,6 +6,7 @@ export const CashInCashierProvider = ({ children }) => {
 	const [cashInCashier, setCashInCashier] = useState({
 		cashAdded: "",
 		pullCash: "",
+		latestColumn: "",
 	});
 
 	console.log("cashInCashier", cashInCashier);
@@ -42,6 +43,7 @@ export const CashInCashierProvider = ({ children }) => {
 				setCashInCashier({
 					cashAdded: dataFloat.totalCash,
 					pullCash: dataPull.totalCash,
+					latestColumn: dataFloat.startingCash,
 				});
 			} catch (err) {
 				console.error("Error fetching value:", err);

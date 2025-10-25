@@ -2,15 +2,13 @@ import styles from "./cashClosingModal.module.css";
 import { useEffect, useState, useRef, useContext } from "react";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const CashClosingModal = ({
-	setModal,
-	corte,
-	setCashClosingModal,
-	netCash,
-}) => {
-	const { auth } = useContext(AuthContext);
+const CashClosingModal = ({ setCashClosingModal, netCash }) => {
+	const { auth, setAuth } = useContext(AuthContext);
 
+	console.log(auth);
+	const navigate = useNavigate();
 	const guardarRow7Ref = useRef(null);
 	useEffect(() => {
 		if (guardarRow7Ref.current) {
@@ -55,12 +53,14 @@ const CashClosingModal = ({
 	});
 
 	const [totalCash, setTotalCash] = useState(0);
-	const [openCorte, setOpenCorte] = useState(false);
-	const [mensaje, setMensaje] = useState(false);
+
+	const [submitting, setSubmitting] = useState(false);
+
+	console.log(dejar);
 
 	useEffect(() => {
 		const calculateSum = (obj) => {
-			return denominations.reduce((total, denomination, index) => {
+			const denom = denominations.reduce((total, denomination, index) => {
 				const key = denomination.key;
 				const value = parseFloat(obj[key]) || 0;
 				const multiplier =
@@ -69,12 +69,14 @@ const CashClosingModal = ({
 						: parseFloat(denomination.label.replace(/[$,]/g, ""));
 				return total + value * multiplier;
 			}, 0);
+
+			return denom;
 		};
 
 		const sumGuardar = calculateSum(guardar);
 		const sumDejar = calculateSum(dejar);
 		setTotalCash(sumGuardar + sumDejar - netCash);
-	}, [guardar, dejar]);
+	}, [guardar, dejar, netCash]);
 
 	// using keyboard arrow keys
 	const handleKeyDown = (e) => {
@@ -138,6 +140,16 @@ const CashClosingModal = ({
 		}
 	};
 
+	// closes the app.
+	const handleLogout = () => {
+		Axios.get("https://localhost:3001/logout", {
+			withCredentials: true,
+		}).then((res) => {
+			setAuth((prev) => ({ ...prev, logged: false }));
+			res.data === "cleared cookie" && navigate("/login");
+		});
+	};
+
 	// const hacerCorte = () => {
 	// 	Axios.post("https://localhost:3001/corte", { usu_id: auth.id }).then(
 	// 		(res) => {
@@ -149,59 +161,35 @@ const CashClosingModal = ({
 	// };
 
 	const hacerCorte = async () => {
+		if (submitting) return;
+		setSubmitting(true);
 		try {
+			const corteLabel = getCorteLabel();
 			const dataToSend = {
 				usu_id: auth.id,
-				...guardar,
-				...dejar,
-				...totalCash, // this spreads your coin/bill values
+				guardar,
+				dejar,
+				totalCash,
+				corteLabel,
 			};
-
 			const res = await Axios.post(
 				"https://localhost:3001/corte",
 				dataToSend
 			);
 			console.log("Corte + cash float response:", res.data);
+			setAuth((prev) => ({
+				...prev,
+				corteExitoso: true,
+			}));
 
-			setOpenCorte(false);
-			setMensaje(true);
-			setModal(false);
+			handleLogout();
 		} catch (error) {
 			console.error("Error submitting corte and cash float:", error);
 			alert("Error submitting data. Please try again.");
+		} finally {
+			setSubmitting(false);
 		}
 	};
-
-	// const handleSubmit = async () => {
-	// 	try {
-	// 		const response = await fetch(
-	// 			"https://localhost:3001/postCashFloat/cashFloat",
-	// 			{
-	// 				method: "POST",
-	// 				headers: {
-	// 					"Content-Type": "application/json",
-	// 				},
-	// 				// Convert object to JSON string
-	// 				body: JSON.stringify({
-	// 					...inputs,
-	// 					usu_id: auth.id,
-	// 				}),
-	// 			}
-	// 		);
-
-	// 		// Fetch does not throw an error for non-2xx responses, so check manually
-	// 		if (!response.ok) {
-	// 			throw new Error(`HTTP error! Status: ${response.status}`);
-	// 		}
-
-	// 		await refreshCashFloat();
-	// 		// If we reach here, the response is OK (2xx)
-	// 		setModal(false);
-	// 	} catch (error) {
-	// 		console.error("Error submitting values:", error);
-	// 		alert("Error submitting data. Please try again.");
-	// 	}
-	// };
 
 	return (
 		<div className={styles.modalBackground}>
@@ -325,19 +313,16 @@ const CashClosingModal = ({
 					>
 						<p>{getCorteLabel()}</p>
 					</div>
+
 					<button
+						type="button"
 						className={styles.cashclosingButton}
 						onClick={hacerCorte}
 					>
-						CORTAR
+						{submitting ? "Cortando..." : "CORTAR"}
 					</button>
 				</form>
 			</div>
-			{mensaje && (
-				<div className={styles.corteExitoso}>
-					Corte realizado con exito
-				</div>
-			)}
 		</div>
 	);
 };

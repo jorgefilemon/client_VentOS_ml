@@ -44,7 +44,7 @@ const Menu = () => {
 	}, []);
 
 	const handleLogout = () => {
-		Axios.get("https:localhost:3001/logout", {
+		Axios.get("https://localhost:3001/logout", {
 			withCredentials: true,
 		}).then((res) => {
 			setAuth({ logged: false });

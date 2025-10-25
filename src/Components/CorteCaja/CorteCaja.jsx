@@ -3,13 +3,15 @@ import styles from "./corteCaja.module.css";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 import CashClosingModal from "./CashClosingModal/CashClosingModal";
+
 // import { useCashInCashier } from "../../Contexts/CashInCashierContext";
 
 import CorteCajaPanel from "./CorteCajaPanel";
 
 const CorteCaja = () => {
 	// const { auth } = useContext(AuthContext);
-	const [openCorte, setOpenCorte] = useState(false);
+
+	const [mensaje, setMensaje] = useState(false);
 
 	const [expense, setExpenses] = useState([]);
 	const [expenseTotal, setExpenseTotal] = useState(0);
@@ -61,7 +63,7 @@ const CorteCaja = () => {
 				setExpenseTotal(response.data.expenseTotal);
 			}
 
-			setOpenCorte(true);
+			// setOpenCorte(true);
 		} catch (error) {
 			console.error("Error revisando corte:", error);
 		}
@@ -127,16 +129,13 @@ const CorteCaja = () => {
 					Hacer Corte
 				</button>
 			</div>
-			{/* {mensaje && (
-				<div className={styles.corteExitoso}>
-					Corte realizado con exito
-				</div>
-			)} */}
+
 			{cashClosingModal && (
 				<CashClosingModal
 					netCash={netCash}
 					setCashClosingModal={setCashClosingModal}
 					corte={corte}
+					setMensaje={setMensaje}
 				/>
 			)}
 		</div>

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./connectingModal.module.css"; // Create a CSS file for modal styling
 
 const ConnectingModal = ({ onClose }) => {
