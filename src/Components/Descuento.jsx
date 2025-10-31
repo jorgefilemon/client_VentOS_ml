@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ProductsContext } from "../Contexts/Context";
 import "./descuento.css";
 // import CurrencyInput from 'react-currency-input-field';
@@ -8,33 +8,37 @@ const Descuento = ({ closeModal, passPrice, setModalsActive }) => {
 
 	// 1
 	const [newPrice, setNewPrice] = useState(passPrice);
+
 	// 2
-	const [value, setValue] = useState(0);
-	console.log(typeof newPrice);
+	const [value, setValue] = useState(10);
+
 	// converts the value of input modalprecio-descuento from toFixed to number so it can be then edited
 	// 3
 	const [toFixed, setToFixed] = useState(true);
 
 	const applyDiscount = (value) => {
-		setNewPrice((passPrice - (passPrice * value) / 100).toFixed(2));
+		// Calculate discount
+		let discounted = passPrice - (passPrice * value) / 100;
+
+		// Round to nearest multiple of 5
+		const rounded = Math.floor(discounted / 5) * 5;
+
+		// Update price and percent shown
+		setNewPrice(rounded);
+		const offRealPercent = (100 - (rounded * 100) / passPrice).toFixed(1);
+		setValue(offRealPercent);
+		setToFixed(true);
 	};
 
+	useEffect(() => {
+		applyDiscount(10);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	// muestra el porcentaje de descuento ex. 5.00%
 	const getPercentage = (newPrice) => {
 		const result = 100 - (newPrice * 100) / passPrice;
 
 		setValue(result.toFixed(1));
-	};
-
-	const roundDiscount = () => {
-		// setActiveButton(true);
-		const precioFloor = Math.floor(newPrice / 5) * 5;
-		setNewPrice(precioFloor);
-		const offRealPercent = (100 - (precioFloor * 100) / passPrice).toFixed(
-			1
-		);
-		setValue(offRealPercent);
-		setToFixed(true);
 	};
 
 	// const desInput = useRef();
@@ -104,7 +108,7 @@ const Descuento = ({ closeModal, passPrice, setModalsActive }) => {
 						]}
 					/>
 					<p>%</p>
-					<button onClick={roundDiscount}>redondeo</button>
+					{/* <button onClick={roundDiscount}>redondeo</button> */}
 				</div>
 				<div className="precio-editable">
 					<input
