@@ -40,6 +40,9 @@ function Home() {
 
 	const [cambioCliente, setCambioCliente] = useState(0);
 
+	const [mercadoLibreRes, setMercadoLibreRes] = useState(null);
+
+
 	// 9 state of modals setModals Active or Not
 	const [modalsActive, setModalsActive] = useState(false);
 	// modal to add money
@@ -114,9 +117,14 @@ function Home() {
 						setModalsActive={setModalsActive}
 					/>
 				)}
-
+				{/* this context also holds the response from mercado libre */}
 				<CambioContext.Provider
-					value={{ cambioCliente, setCambioCliente }}
+					value={{
+						cambioCliente,
+						setCambioCliente,
+						mercadoLibreRes,
+						setMercadoLibreRes,
+					}}
 				>
 					{openVenta && (
 						<PagarModal

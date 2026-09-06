@@ -50,7 +50,7 @@ const DevolucionDinero = ({
 	const resultadoInverso = resultado === 0 ? resultado : resultado * -1;
 
 	const generarVale = () => {
-		Axios.get(`https:localhost:3001/search/cambio`).then((response) => {
+		Axios.get(`https://localhost:3001/search/cambio`).then((response) => {
 			const res = response.data[0];
 
 			const newFormArticulo = {

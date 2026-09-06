@@ -20,47 +20,35 @@ const LoginForm = () => {
 		refInput.current.focus();
 	}, []);
 
-	const login = () => {
-		try {
-			// Check if online before attempting MercadoLibre redirection
-			if (navigator.onLine) {
-				window.location.href =
-					"https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=3814276840650694&redirect_uri=https://localhost:3001/callback";
-			} else {
-				// Navigate to local home page if offline
-				navigate("/");
-			}
-		} catch (error) {
-			console.error("Error during login:", error.message);
-			// Fallback to local home page in case of an error
-			navigate("/");
-		}
+	const loginToMercadoLibre = () => {
+		window.location.href =
+			"https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=3814276840650694&redirect_uri=https://localhost:3001/callback";
 	};
 
-	// submit // login authenticate
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
 			const { data } = await Axios.post(
 				"https://localhost:3001/login",
-				{
-					userName: userName,
-					password: password,
-				},
+				{ userName, password },
 				{ withCredentials: true }
 			);
 
 			if (data.message) {
 				setErrorMessage(data.message);
-			} else {
-				setAuth((prevAuth) => ({
-					...prevAuth,
-					logged: data.logged,
-				}));
+				return;
+			}
 
-				// setMercadoConn(true);
-				login();
+			setAuth((prevAuth) => ({
+				...prevAuth,
+				logged: data.logged,
+			}));
+
+			if (navigator.onLine) {
+				loginToMercadoLibre();
+			} else {
+				navigate("/");
 			}
 		} catch (error) {
 			console.error("Error during login:", error);

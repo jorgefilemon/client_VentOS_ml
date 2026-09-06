@@ -7,16 +7,24 @@ const PrivateRoutes = () => {
 	const { auth, setAuth } = useContext(AuthContext);
 
 	const [authorized, setAuthorized] = useState(null);
+
 	useEffect(() => {
+		let isMounted = true;
+		const controller = new AbortController();
+
 		const verify = async () => {
 			try {
 				const res = await Axios.get("https://localhost:3001/verify", {
-					withCredentials: true, // Ensure credentials (cookies) are sent
+					withCredentials: true,
+					signal: controller.signal,
 				});
+
+				if (!isMounted) {
+					return;
+				}
 
 				const data = res.data;
 
-				// Update the authentication state with the response data
 				setAuth((prev) => ({
 					...prev,
 					logged: data.logged,
@@ -25,21 +33,39 @@ const PrivateRoutes = () => {
 					mercadoConnection: data.connected,
 				}));
 
-				// Update authorization status based on the response
-				data.logged ? setAuthorized(true) : setAuthorized(false);
+				setAuthorized(Boolean(data.logged));
 			} catch (err) {
-				console.error("Error during verification:", err); // Log the error for debugging
+				if (!isMounted || Axios.isCancel(err) || err.name === "CanceledError") {
+					return;
+				}
+
+				console.error("Error during verification:", err);
+
+				if (auth.logged) {
+					setAuthorized(true);
+					setAuth((prev) => ({
+						...prev,
+						mercadoConnection: false,
+					}));
+					return;
+				}
+
 				setAuthorized(false);
 			}
 		};
 
 		verify();
-	}, [setAuth]); // Ensure setAuth is included in the dependency array if it's coming from props or context
+
+		return () => {
+			isMounted = false;
+			controller.abort();
+		};
+	}, [auth.logged, setAuth]);
 
 	if (authorized === null) {
 		return null;
 	}
-	// Prevents creating back-stack entries for /login on redirects.
+
 	return authorized ? <Outlet /> : <Navigate to="/login" replace />;
 };
 

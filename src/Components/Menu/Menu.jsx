@@ -27,7 +27,7 @@ const Menu = () => {
 		const fetchData = async () => {
 			try {
 				const res = await Axios.get(
-					"https:localhost:3001/shoeSellsInPeriod",
+					"https://localhost:3001/shoeSellsInPeriod",
 					{
 						withCredentials: true,
 					}

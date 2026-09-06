@@ -50,7 +50,7 @@ const UsarVale = ({ setOpenUsarVale, setModalsActive }) => {
 	};
 
 	const generarVale = () => {
-		Axios.get(`https:localhost:3001/search/usar`).then((response) => {
+		Axios.get(`https://localhost:3001/search/usar`).then((response) => {
 			const res = response.data[0];
 
 			const newFormArticulo = {

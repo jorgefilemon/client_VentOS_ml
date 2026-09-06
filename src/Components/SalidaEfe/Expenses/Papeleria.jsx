@@ -32,7 +32,7 @@ function Papeleria({ closeModal, modalName }) {
 		e.preventDefault();
 
 		try {
-			await axios.post("https:localhost:3001/expense", {
+			await axios.post("https://localhost:3001/expense", {
 				expenseList: expenseList, // Use the updated list directly here
 				usu_id: auth.id,
 				usu_name: auth.name,

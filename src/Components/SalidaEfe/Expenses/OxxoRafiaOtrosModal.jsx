@@ -37,7 +37,7 @@ function OxxoRafiaOtrosModal({ setOxxoRafiaOtrosModal }) {
 		setExpenseList(updatedExpenseList);
 		// Then, try to post this updated list to your server
 		try {
-			await axios.post("https:localhost:3001/expense", {
+			await axios.post("https://localhost:3001/expense", {
 				expenseList: updatedExpenseList, // Use the updated list directly here
 				usu_id: auth.id,
 				usu_name: auth.name,

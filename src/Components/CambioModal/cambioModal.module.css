@@ -1,62 +1,64 @@
 @import url('../../App.css');
 
-
 .cambioModalBackground {
   width: 100vw;
-  height: 100vw;
+  min-height: 100vh;
   background-color: rgba(126, 126, 126, 0.885);
   position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(1px);
 }
 
+.modalStack {
+  width: min(760px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+}
+
 .cambioContainer {
-  margin-top: -40px;
-  background-color:var(--midNightGray);
-  width: 760px;
-  min-height: 400px;
-  border-radius: 6px;
+  background-color: var(--midNightGray);
+  width: 100%;
+  min-height: 320px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
- 
+  padding: 0 0 36px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
 }
 
 .cancelarContainer {
-  display: flex;
-  /* background-color: rgb(101, 148, 218); */
-  width: 100%;
-
-  justify-content: flex-end;
-  border-radius: 6px 6px 0px 0px;
-  padding: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
 }
+
 .cancelarContainer > button {
   border: none;
   color: white;
   background-color: rgb(196, 196, 196);
   border-radius: 6px;
   padding: 0px;
-  height: 50px;
+  height: 44px;
   font: 0px;
-  width: 60px;
+  width: 54px;
+  cursor: pointer;
 }
 
 .cambioParaCliente {
   font-size: 40px;
-  padding: 20px;
+  padding: 28px 20px 12px;
   color: rgb(198, 198, 198);
   width: 100%;
-
   text-align: center;
 }
-
-/* .moneyLogo {
-  color: rgb(198, 198, 198);
-  font-size: 80px;
-} */
 
 .totalCambio {
   font-size: 90px;
@@ -67,4 +69,64 @@
   color: rgb(185, 185, 185);
   font-weight: 400;
   font-size: 18px;
+  width: 82%;
+  text-align: center;
+}
+
+.mercadoContainer {
+  width: 100%;
+  background-color: var(--midNightGray);
+  border-radius: 10px;
+  padding: 18px 22px 20px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.mercadoLabel {
+  margin: 0 0 10px;
+  color: rgb(185, 185, 185);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mercadoMessages {
+  color: rgb(185, 185, 185);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style-position: outside;
+  margin: 0;
+  padding: 8px 0 0 22px;
+  width: 100%;
+}
+
+.mercadoMessage {
+  font-weight: 500;
+  font-size: 21px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .cambioParaCliente {
+    font-size: 30px;
+  }
+
+  .totalCambio {
+    font-size: 64px;
+    text-align: center;
+  }
+
+  .cancelarContainer {
+    top: 8px;
+    right: 8px;
+  }
+
+  .mercadoContainer {
+    width: 100%;
+  }
+
+  .mercadoMessage {
+    font-size: 18px;
+  }
 }

@@ -23,7 +23,7 @@ function App() {
 		user: "",
 		id: "",
 		corteExitoso: false,
-		mercadoConn: false,
+		mercadoConnection: false,
 	});
 
 	// console.log(auth);

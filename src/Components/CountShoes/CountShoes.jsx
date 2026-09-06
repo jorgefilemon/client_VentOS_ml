@@ -10,7 +10,7 @@ const CountShoes = () => {
 		const fetchData = async () => {
 			try {
 				const res = await Axios.get(
-					"https:localhost:3001/shoeSellsInTwoMonths",
+					"https://localhost:3001/shoeSellsInTwoMonths",
 					{
 						withCredentials: true,
 					}

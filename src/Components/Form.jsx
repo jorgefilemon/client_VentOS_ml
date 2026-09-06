@@ -57,7 +57,7 @@ const Form = () => {
 		if (input === "") return;
 		/// le agrege esto para que no marcara error cuando le das en buscar y no hay articulo
 
-		Axios.get(`https:localhost:3001/search/${input}`).then((response) => {
+		Axios.get(`https://localhost:3001/search/${input}`).then((response) => {
 			const res = response.data[0];
 			if (!res) {
 				alert("producto no existe");
@@ -85,7 +85,7 @@ const Form = () => {
 	};
 
 	const getLastTicket = () => {
-		Axios.get("https:localhost:3001/lastTicket").then((res) => {
+		Axios.get("https://localhost:3001/lastTicket").then((res) => {
 			console.log(res.data);
 		});
 		refInput.current.focus();
