@@ -16,14 +16,14 @@
     width: 80%;
     padding: 20px;
     border-radius: 6px;
-    margin-top: -180px; /* Shift the container upwards */
+
 
   }
   
   .countShoesTableContainer table {
     width: 60%;
 
-    font-size: 20px;
+    font-size: 18px;
     border-collapse: collapse;
     color: white;
   }
@@ -44,11 +44,14 @@
     background-color: var(--lightMidnight);
   }
 
-/* 
-  .countShoesTableContainer table tbody tr:nth-child(1){
-    padding: 10px;
-    border: solid 1px rgb(240, 240, 240);
-    text-align: right;
-    width: 120px;
-    background-color: var(--midNightGray)
-  } */
+  .countShoesTableContainer table tbody tr:nth-child(4) td {
+    border-bottom: 3px solid white;
+}
+
+.countShoesTableContainer table tbody tr:nth-child(8) td {
+  border-bottom: 3px solid white;
+}
+
+.countShoesTableContainer table tbody tr:nth-child(1) td {
+  border-top: 3px solid white;
+}

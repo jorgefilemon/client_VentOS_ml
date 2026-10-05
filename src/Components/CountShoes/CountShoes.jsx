@@ -21,7 +21,7 @@ const CountShoes = () => {
 				if (res.data.length > 0) {
 					const monthKeys = Object.keys(res.data[0])
 						.filter((key) => key !== "period")
-						.sort((a, b) => b - a); // Sort months in descending order
+						.sort((a, b) => a - b); // Sort months in descending order
 					setMonths(monthKeys);
 				}
 			} catch (err) {
@@ -49,7 +49,7 @@ const CountShoes = () => {
 	});
 
 	// Slice the array to get only the first 3 rows
-	const limitedData = flattenedData.slice(0, 5);
+	const limitedData = flattenedData;
 
 	return (
 		<div className={styles.countShoesTableContainer}>

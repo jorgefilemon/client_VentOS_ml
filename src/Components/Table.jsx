@@ -48,9 +48,10 @@ const Table = () => {
           <tr>
             <th>borrar</th>
             <th>descripcion</th>
+            <th>precio o.</th>
             <th>desc.</th>
             <th>rebaja</th>
-            <th>precio</th>
+            <th>precio f.</th>
           </tr>
         </thead>
         <tbody>
@@ -90,6 +91,8 @@ const Table = () => {
                 </button>
               </td>
               <td>{product.descripcion}</td>
+              <td>{new Intl.NumberFormat('en-US',
+                { style: 'currency', currency: 'USD' }).format(product.precio1)}</td>
               <td>{product.descuento}%</td>
               <td>{new Intl.NumberFormat('en-US',
                 { style: 'currency', currency: 'USD' }).format(product.rebaja)}</td>

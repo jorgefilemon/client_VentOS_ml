@@ -14,6 +14,10 @@ const Nav = ({
 }) => {
 	const { products, setproducts } = useContext(ProductsContext);
 
+	const keepInputFocus = (event) => {
+		if (products.length === 0) event.preventDefault();
+	};
+
 	const getInapam = () => {
 		setproducts(
 			products.map((product) =>
@@ -85,7 +89,12 @@ const Nav = ({
 			</button>
 			<button
 				className="descuento-btn"
-				onClick={() => [descuento(), setModalsActive(true)]}
+				onMouseDown={keepInputFocus}
+				onClick={() => {
+					if (products.length === 0) return;
+					descuento();
+					setModalsActive(true);
+				}}
 			>
 				{" "}
 				Descuento{" "}
@@ -93,7 +102,12 @@ const Nav = ({
 			{/* <button className="devolucion-btn" onClick={() => devolucion()}>Devolucion Calzado</button> */}
 			<button
 				className="ajuste-btn"
-				onClick={() => [ajustePrecio(), setModalsActive(true)]}
+				onMouseDown={keepInputFocus}
+				onClick={() => {
+					if (products.length === 0) return;
+					ajustePrecio();
+					setModalsActive(true);
+				}}
 			>
 				Devolucion Calzado
 			</button>

@@ -77,7 +77,7 @@ const Footer = ({
 							: "mercadoSinConexion"
 					}
 				>
-					{auth.mercadoConnection ? "Contectado" : "Sin conexion"}
+					{auth.mercadoConnection ? "Conectado" : "No conectado"}
 				</h4>
 			</div>
 			<div className="button-container">

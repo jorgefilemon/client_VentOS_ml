@@ -10,6 +10,7 @@ const SalidaEfe = () => {
 	const Fletes = "Fletes"; // Define Fletes as a string
 	const Donativos = "Donativos";
 	const Papeleria = "Papeleria";
+	const Asistentes = "Asistentes";
 
 	// context for Oxxo Rafia otros
 	const { expense, setExpense } = useContext(ExpenseContext);
@@ -116,6 +117,15 @@ const SalidaEfe = () => {
 					}}
 				>
 					otros
+				</button>
+				 <button
+					className={styles.ciruelaPastel}
+					onClick={() => {
+						setModalName(Asistentes);
+						setIsModalOpen(true);
+					}}
+				>
+					asistentes
 				</button>
 			</div>
 

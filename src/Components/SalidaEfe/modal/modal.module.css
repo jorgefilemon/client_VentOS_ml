@@ -161,3 +161,13 @@
 .orange {
 	background-color: orange;
 }
+
+.modalContainer .options .assistantNameButton:not(:last-child) {
+	border-right: 1px solid white;
+}
+
+.ciruelaPastel,
+.aceptarCancelar .ciruelaPastel {
+	background-color: var(--ciruelaPastel-bg);
+	color: white;
+}

@@ -57,6 +57,10 @@ function ModalCantidad({
 
 	// chooses background color
 	const pickColor = ({ expense }) => {
+		if (expense.type === "Asistentes") {
+			return "var(--ciruelaPastel-bg)";
+		}
+
 		const color = {
 			"inter bajio": "var(--rosaFuerte-bg)",
 			castores: "var(--rosa-bg)",

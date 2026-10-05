@@ -20,11 +20,6 @@ const LoginForm = () => {
 		refInput.current.focus();
 	}, []);
 
-	const loginToMercadoLibre = () => {
-		window.location.href =
-			"https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=3814276840650694&redirect_uri=https://localhost:3001/callback";
-	};
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -45,11 +40,7 @@ const LoginForm = () => {
 				logged: data.logged,
 			}));
 
-			if (navigator.onLine) {
-				loginToMercadoLibre();
-			} else {
-				navigate("/");
-			}
+			navigate("/", { replace: true });
 		} catch (error) {
 			console.error("Error during login:", error);
 		}
