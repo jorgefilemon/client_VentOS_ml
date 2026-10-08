@@ -47,7 +47,11 @@ const CashFloat = () => {
 			const dataFloat = await resFloat.json();
 			setCashFloat(dataFloat.cash);
 			setTotalCash(dataFloat.totalCash);
-			setCashInCashier(dataFloat.totalCash); // <- update shared context here ✅
+			setCashInCashier((prev) => ({
+				...prev,
+				cashAdded: dataFloat.totalCash,
+				latestColumn: dataFloat.startingCash,
+			}));
 
 			// Fetch for addPull
 			const resPull = await fetch(
@@ -62,6 +66,7 @@ const CashFloat = () => {
 			const dataPull = await resPull.json();
 			setCashPull(dataPull.cash);
 			setPullTotal(dataPull.totalCash);
+			setCashInCashier((prev) => ({ ...prev, pullCash: dataPull.totalCash }));
 		} catch (err) {
 			console.error("Error fetching value:", err);
 		}

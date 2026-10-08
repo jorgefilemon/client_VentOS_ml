@@ -65,11 +65,8 @@ function Home() {
 	const cashValue = parseFloat(cashInCashier.cashAdded);
 
 	useEffect(() => {
-		// ✅ only run once when Home first mounts
-		if (!isNaN(cashValue) && cashValue < 85) {
-			setAddCashToDrawer(true);
-		}
-	}, [cashValue]); // ✅ runs once per login session
+		setAddCashToDrawer(!isNaN(cashValue) && cashValue < 85);
+	}, [cashValue]);
 
 	// const { auth } = useContext(AuthContext);
 	// // verifies if a session exists

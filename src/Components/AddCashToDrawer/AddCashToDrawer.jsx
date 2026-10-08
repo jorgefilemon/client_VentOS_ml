@@ -5,7 +5,7 @@ import { useCashInCashier } from "../../Contexts/CashInCashierContext";
 
 const AddCashToDrawer = ({ setAddCashToDrawer }) => {
 	const { auth } = useContext(AuthContext);
-	const { cashInCashier } = useCashInCashier(); // <- first destructure
+	const { cashInCashier, setCashInCashier } = useCashInCashier();
 	const { cashAdded, latestColumn } = cashInCashier; // <- second destructure
 	const userId = auth?.id;
 
@@ -97,6 +97,19 @@ const AddCashToDrawer = ({ setAddCashToDrawer }) => {
 				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
 
+			const cashResponse = await fetch(
+				"https://localhost:3001/cashFloat/cashFloat",
+				{ credentials: "include" }
+			);
+			if (!cashResponse.ok) {
+				throw new Error(`HTTP error! Status: ${cashResponse.status}`);
+			}
+			const cashData = await cashResponse.json();
+			setCashInCashier((prev) => ({
+				...prev,
+				cashAdded: cashData.totalCash,
+				latestColumn: cashData.startingCash,
+			}));
 			setAddCashToDrawer(false);
 		} catch (error) {
 			console.error("Error submitting values:", error);
