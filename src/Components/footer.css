@@ -73,6 +73,13 @@
 	font: 18px;
 }
 
+.mercadoReconnect {
+	display: inline-block;
+	margin-top: 6px;
+	color: white;
+	text-decoration: underline;
+}
+
 .mercadoSinConexion {
 	background-color: rgb(146, 146, 146);
 	border-radius: 6px;

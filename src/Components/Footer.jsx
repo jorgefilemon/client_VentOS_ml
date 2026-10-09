@@ -79,6 +79,14 @@ const Footer = ({
 				>
 					{auth.mercadoConnection ? "Conectado" : "No conectado"}
 				</h4>
+				{!auth.mercadoConnection && (
+					<a
+						className="mercadoReconnect"
+						href="https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=3814276840650694&redirect_uri=https://localhost:3001/callback"
+					>
+						Conectar Mercado Libre
+					</a>
+				)}
 			</div>
 			<div className="button-container">
 				<button
