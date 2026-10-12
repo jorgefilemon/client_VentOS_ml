@@ -69,11 +69,11 @@ function Fletes({ closeModal, modalName }) {
 		<>
 			<div className={styles.options}>
 				<button
-					id="inter bajio"
+					id="tres guerras"
 					className={styles.rosaFuerte}
 					onClick={(e) => createexpense(e)}
 				>
-					inter bajio
+					tres guerras
 				</button>
 				<button
 					id="castores"

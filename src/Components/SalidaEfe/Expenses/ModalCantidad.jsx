@@ -62,7 +62,7 @@ function ModalCantidad({
 		}
 
 		const color = {
-			"inter bajio": "var(--rosaFuerte-bg)",
+			"tres guerras": "var(--rosaFuerte-bg)",
 			castores: "var(--rosa-bg)",
 			"julian de obregon": "var(--naranja-bg)",
 			otro: "var(--morado-bg)",
