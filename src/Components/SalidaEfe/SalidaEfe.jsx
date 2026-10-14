@@ -67,12 +67,12 @@ const SalidaEfe = () => {
 							...expense,
 							cantidad: 0,
 							type: "agua",
-							expenseName: "Agua oxxo",
+							expenseName: "Agua",
 						});
 						setOxxoRafiaOtrosModal(true);
 					}}
 				>
-					agua oxxo
+					agua
 				</button>
 			</div>
 			<div className={styles.row2}>
