@@ -82,7 +82,7 @@ const Footer = ({
 				{!auth.mercadoConnection && (
 					<a
 						className="mercadoReconnect"
-						href="https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=3814276840650694&redirect_uri=https://localhost:3001/callback"
+						href="https://auth.mercadolibre.com.mx/authorization?response_type=code&client_id=8567837238197477&redirect_uri=https://localhost:3001/callback"
 					>
 						Conectar Mercado Libre
 					</a>
